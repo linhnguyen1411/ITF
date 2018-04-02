@@ -11,10 +11,28 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+//= require jquery_ujs
 //= require bootstrap
+//= require ckeditor/init
+//= require ckeditor/plugins/widget/plugin
+//= require ckeditor/plugins/codesnippet/plugin
 //= require syntax-highlighter-rails/shCore
 //= require syntax-highlighter-rails/shBrushCpp
-//= require rails-ujs
-//= require turbolinks
+// require turbolinks
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
+
+CKEDITOR.config.customConfig = '/assets/ckeditor/ckeditor_config.js';
+$(document).ready(function(){
+  $('.alert').animate({right: '10px'}, 800, function() {
+    window.setTimeout(function() {
+      $('.alert').animate({top: '-50px'}, 400, function() {
+        $('.alert').hide();
+      });
+    }, 2000);
+  });
+})

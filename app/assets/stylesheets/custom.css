@@ -1,0 +1,21 @@
+.span-line::after {
+  margin-left: 20px;
+}
+#error_explanation ul li {
+  color: red;
+}
+.alert {
+  position: fixed;
+  top: 62px;
+  right: -200px;
+  z-index: 1111;
+}
+.alert.alert-notice {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.bold-red-text {
+  color: red;
+  font-weight: bold;
+}
