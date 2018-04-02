@@ -1,0 +1,8 @@
+$('#reply_form_<%= @reply.parent_id %>').html('<%= j(render"replies/form", reply: @reply, post_type: @post_type) %>')
+  .hide().delay(100).slideDown(700);
+var ck = $('.ckeditor');
+$.each(ck, function(i) {
+  if (ck[i].id == 'reply_content_<%= @reply.parent_id %>'){
+    CKEDITOR.replace(ck[i]);
+  }
+})

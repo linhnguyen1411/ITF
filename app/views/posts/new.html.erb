@@ -1,14 +1,17 @@
+<script type="text/javascript">
+  CKEDITOR.config.customConfig = '/assets/ckeditor/ckeditor_config.js';
+</script>
   <div class="main-content-area">
     <section class="page-title">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-7 co-xs-12 text-left">
-            <h1><%= t ".page_title" %></h1>
+            <h1><%= t ".#{@post.type}.page_title" %></h1>
           </div>
           <div class="col-md-6 col-sm-5 co-xs-12 text-right">
             <div class="bread">
               <ol class="breadcrumb">
-                <li><%= link_to t("page_title.home"), root_path %></a></li>
+                <li><%= link_to t("page_title.home"), root_path %></li>
                 <li class="active"><%= t ".breadcrumb" %></li>
               </ol>
             </div>

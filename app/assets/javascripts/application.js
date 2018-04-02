@@ -20,6 +20,13 @@
 //= require ckeditor/plugins/codesnippet/plugin
 //= require syntax-highlighter-rails/shCore
 //= require syntax-highlighter-rails/shBrushCpp
+//= require syntax-highlighter-rails/shBrushCSharp
+//= require syntax-highlighter-rails/shBrushSql
+//= require syntax-highlighter-rails/shBrushRuby
+//= require syntax-highlighter-rails/shBrushPython
+//= require syntax-highlighter-rails/shBrushJava
+//= require syntax-highlighter-rails/shBrushJScript
+//= require syntax-highlighter-rails/shBrushCss
 // require turbolinks
 //= require i18n
 //= require i18n.js
@@ -27,7 +34,7 @@
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
 
-CKEDITOR.config.customConfig = '/assets/ckeditor/ckeditor_config.js';
+CKEDITOR.config.customConfig = '/assets/ckeditor/small_ckeditor_config.js';
 $(document).ready(function(){
   $('.alert').animate({right: '10px'}, 800, function() {
     window.setTimeout(function() {

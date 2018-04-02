@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   }
   resources :posts
   resources :tags
+  resources :replies
+  resources :users
   root 'static_pages#index'
   get 'static_pages/question_detail'
   get 'static_pages/question_list'

@@ -9,6 +9,8 @@ en:
       signout: "Logout"
       profile_setting: "Profile Setting"
       create_post: "Create Post"
+      article: "Articles"
+      question: "Questions"
   page_title:
     home: "Home"
 
@@ -57,23 +59,62 @@ en:
                     the community you can create an article."
       tags: "Tags"
       placeholder:
-        add_a_tag: "Add a tag"
         add_a_tag: "Add A Tag"
         content: "Post Your Content Here....."
         title: "Your Post Title"
       content: "Content"
       submit: "Publish Your Question"
     create:
-      tag_error: "Tag is too short"
+      tag_error: "is invalid"
       flash_success: "Create a successful post"
-      flash_error: "Create a failed article"
+      flash_danger: "Create a failed article"
     show:
       article:
         page_title: "Article Detial"
         breadcrumb: "Article Detial"
+        post_reply: "Post comment"
+        cancel_reply: "Cancel comment"
+        thread_reply: "Thread comment"
       question:
         page_title: "Question Detial"
         breadcrumb: "Question Detial"
+        post_reply: "Post answer"
+        cancel_reply: "Cancel answer"
+        thread_reply: "Thread answer"
+      cancel_reply: "Cancel reply"
+      post_reply: "Reply"
+    reply:
+      view_more: "View more "
+      replies: " replies"
+    index:
+      article:
+        page_title: "All Article"
+        breadcrumb: "Article Listing"
+      question:
+        page_title: "All Question"
+        breadcrumb: "Question Listing"
+  replies:
+    new:
+      article:
+        post_reply: "Post comment"
+      question:
+        post_reply: "Post answer"
+    create:
+      article:
+        flash_success: "Create a successful comment"
+        flash_danger: "Create a failed comment"
+      question:
+        flash_success: "Create a successful answer"
+        flash_danger: "Create a failed answer"
+    reply:
+      correct_answer: "Correct Answer"
+      reply: "Reply"
+    form:
+      article:
+        post_reply: "Post comment"
+      question:
+        post_reply: "Post answer"
+      post_reply: "Reply"
   flash:
     load:
       not_found: "Not found"

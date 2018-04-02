@@ -1,10 +1,22 @@
 class PostsController < ApplicationController
   before_action :load_post, only: [:show]
+
   def new
     @post = Post.new
   end
 
-  def show;end
+  def index
+    @type = params[:type]
+    if Post.types.include? @type
+      @posts = Post.send(@type).includes_full.page(params[:page]).per Settings.paginate_default
+    else
+      redirect_to root_path
+    end
+  end
+
+  def show
+    @replies = Reply.by_post @post
+  end
 
   def create
     @post = current_user.posts.build post_params
@@ -17,6 +29,7 @@ class PostsController < ApplicationController
       end
     end
   rescue
+    @post.errors.add(:tags, t(".tag_error")) if @post.errors.blank?
     respond_to do |format|
       format.js
     end
@@ -30,8 +43,7 @@ class PostsController < ApplicationController
 
   def save_post_tags post, tag
     params[:tags].split(",").each do |item|
-      tag = Tag.find_or_create_by! name: item
-      PostTag.create post_id: post.id, tag_id: tag.id
+      @post.post_tags.create! tag: Tag.find_or_create_by!(name: item)
     end
   end
 

@@ -1,0 +1,11 @@
+<%= form_for(reply, remote: reply.parent_id.present? ) do |f| %>
+  <%= f.hidden_field :post_id %>
+  <%= f.hidden_field :parent_id %>
+  <div class="form-group">
+    <%= f.text_area :content,required: true, class: "form-control ckeditor",
+      id: "reply_content_#{reply.parent_id}"%>
+  </div>
+  <div class="form-group submit-reply">
+    <%= f.submit t(".#{post_type}.post_reply"), class: "btn btn-primary pull-right btn-small" %>
+  </div>
+<% end %>
