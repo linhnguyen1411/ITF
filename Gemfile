@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem "mysql2", ">= 0.3.18", "< 0.5"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -33,15 +33,22 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '3.3.7'
-gem 'jquery-rails', '4.3.1'
+gem "jquery-rails"
+gem "jquery-ui-rails"
 gem 'syntax-highlighter-rails'
-
+gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem "ckeditor"
+gem "i18n-js"
+gem "ransack"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'config'
+  gem 'pry'
 end
 
 group :development do

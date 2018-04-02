@@ -1,0 +1,10 @@
+user:
+  max_name: 50
+  min_name: 3
+images:
+  accepted_files: "image/jpeg, image/gif, image/png"
+post:
+  max_title: 250
+  min_title: 6
+tag:
+  limit_for_search: 5

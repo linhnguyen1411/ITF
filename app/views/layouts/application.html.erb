@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    </div>
+    <%= render "layouts/header" %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> fade in"><%= value %></div>
+    <% end %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
