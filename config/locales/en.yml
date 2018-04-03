@@ -34,6 +34,7 @@ en:
           email: "Your Email"
           password: "Your Password"
           pw_confirmation: "Verify Your Password"
+          current_pw: "Your Current Password"
         update: "Update Account"
         browse: "Browse…"
     sessions:
@@ -56,4 +57,14 @@ en:
                     the community you can create an article."
       tags: "Tags"
       placeholder:
-        add_a_tag: "Add a tag"
+        add_a_tag: "Add A Tag"
+        content: "Post Your Content Here....."
+        title: "Your Post Title"
+      content: "Content"
+      submit: "Publish Your Question"
+    create:
+      tag_error: "Tag is too short"
+  flash:
+    create:
+      create_failure: "Create failure"
+      create_success: "Create sucessful"

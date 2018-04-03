@@ -4,6 +4,13 @@
 #error_explanation ul li {
   color: red;
 }
+#error_message li {
+  color: red;
+  list-style: none;
+}
+#error_message {
+  float: left;
+}
 .alert {
   position: fixed;
   top: 62px;
@@ -18,4 +25,12 @@
 .bold-red-text {
   color: red;
   font-weight: bold;
+}
+.alert.alert-alert {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+#tags_tag{
+  width: 75px !important;
 }

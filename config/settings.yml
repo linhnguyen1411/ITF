@@ -1,10 +1,15 @@
 user:
   max_name: 50
   min_name: 3
+  max_password: 250
+  min_password: 6
 images:
   accepted_files: "image/jpeg, image/gif, image/png"
 post:
   max_title: 250
   min_title: 6
+  min_content: 6
 tag:
   limit_for_search: 5
+  max_name: 50
+  min_name: 3
