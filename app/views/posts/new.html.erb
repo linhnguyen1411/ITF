@@ -26,14 +26,14 @@
               <h2><%= t ".page_title" %></h2>
               <p><%= t ".instruction" %></p>
               <hr>
-              <%= form_for @post, html: {class: "margin-top-40"} do |f| %>
+              <%= form_for @post, html: {class: "margin-top-40"}, remote: true do |f| %>
                 <div class="form-group">
                   <%= f.label :type %><span class="bold-red-text"> *</span>
                   <%= f.select :type, options_for_select(list_of_post_types), {},class: "form-control" %>
                 </div>
                 <div class="form-group">
                   <%= f.label :title %><span class="bold-red-text"> *</span>
-                  <%= f.text_field :title, maxlength: Settings.post.max_title,
+                  <%= f.text_field :title, maxlength: Settings.post.max_title, placeholder: t(".placeholder.title"),
                     minlength: Settings.post.min_title, required: true, class: "form-control" %>
                 </div>
                 <div class="form-group">
@@ -41,10 +41,11 @@
                   <%= text_field_tag :tags, "", class: "form-control", data: {role: "tagsinput"} %>
                 </div>
                 <div class="form-group">
-                  <label>Question Detials</label>
-                  <textarea cols="12" rows="12" placeholder="Post Your Question Details Here....." id="message" name="message" class="form-control"></textarea>
+                  <label><%= t ".content"%></label><span class="bold-red-text"> *</span>
+                  <%= f.text_area :content, placeholder: t(".placeholder.content"), class: "form-control ckeditor", required: true, minlength: Settings.post.min_content %>
                 </div>
-                <%= f.submit "Publish Your Question", class: "btn btn-primary pull-right" %>
+                <div id="error_message"></div>
+                <%= f.submit t(".submit"), class: "btn btn-primary pull-right" %>
               <% end %>
             </div>
           </div>

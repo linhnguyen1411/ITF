@@ -1,0 +1,16 @@
+$('#flash_message').html('<div class="alert alert-<%= flash.first.first %> fade in"><%= flash.first.last %></div>')
+<% if flash[:success] %>
+<% else %>
+  <% if @post.errors.full_messages.present? %>
+    $('#error_message').html('<%= raw(@post.errors.full_messages.map { |msg| content_tag(:li, msg) }.join) %>')
+  <% else %>
+    $('#error_message').html('<%= raw(content_tag(:li, t(".tag_error"))) %>')
+  <% end %>
+<% end %>
+$('.alert').animate({right: '10px'}, 800, function() {
+  window.setTimeout(function() {
+    $('.alert').animate({top: '-50px'}, 400, function() {
+      $('.alert').hide();
+    });
+  }, 2000);
+});

@@ -13,8 +13,9 @@
  *= require syntax-highlighter-rails/shCore
  *= require syntax-highlighter-rails/shThemeDefault
  *= require jquery-ui
- *= require_tree .
  *= require_self
+ *= require sweetalert2
+ *= require_tree .
  *= require_tree ../../../vendor/assets/stylesheets/css/.
  *= require_tree ../../../vendor/assets/stylesheets/fonts/.
  */
