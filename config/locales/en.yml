@@ -57,6 +57,7 @@ en:
                     the community you can create an article."
       tags: "Tags"
       placeholder:
+        add_a_tag: "Add a tag"
         add_a_tag: "Add A Tag"
         content: "Post Your Content Here....."
         title: "Your Post Title"
@@ -64,7 +65,15 @@ en:
       submit: "Publish Your Question"
     create:
       tag_error: "Tag is too short"
+      flash_success: "Create a successful post"
+      flash_error: "Create a failed article"
+    show:
+      article:
+        page_title: "Article Detial"
+        breadcrumb: "Article Detial"
+      question:
+        page_title: "Question Detial"
+        breadcrumb: "Question Detial"
   flash:
-    create:
-      create_failure: "Create failure"
-      create_success: "Create sucessful"
+    load:
+      not_found: "Not found"
