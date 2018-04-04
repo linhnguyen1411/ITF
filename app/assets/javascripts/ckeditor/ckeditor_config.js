@@ -11,7 +11,7 @@ CKEDITOR.editorConfig = function (config) {
       'FontSize', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
       'JustifyBlock', '-', 'NumberedList', 'BulletedList', 'Outdent', 'Indent',
       'Undo', 'Redo', 'Find', 'Replace', 'SpellChecker', 'Scayt', 'Image',
-      'Table', 'Smiley', 'SpecialChar', 'Link', 'CodeSnippet']
+      'Table', 'Smiley', 'SpecialChar', 'Link', 'CodeSnippet', 'Source']
     }
   ];
   config.height = 350;
