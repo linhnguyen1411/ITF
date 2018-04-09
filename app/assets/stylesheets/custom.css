@@ -34,3 +34,68 @@
 #tags_tag{
   width: 75px !important;
 }
+.btn.btn-small {
+  padding: 4px 10px;
+}
+.listing-grid .tagcloud a {
+  font-size: 16px !important;
+  padding: 6px 15px !important;
+}
+.listing-grid.padding-bottom-0 {
+  padding-bottom: 0px;
+}
+#answer_form {
+  display: none;
+}
+.reply-content {
+  color: black;
+}
+.btn-small {
+  color: white !important;
+}
+.chidrent-reply {
+  padding: 5px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+  margin-bottom: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+.border-bottom-1 {
+  border-bottom: 1px solid #e5eaef;
+}
+.reply-content {
+  clear: both;
+}
+.img-xs {
+  width: 50px;
+  height: 50px;
+}
+.img-border {
+  border: #be161e solid 1px;
+}
+.btn-hover-success:hover {
+}
+.submit-reply {
+  display: flow-root;
+}
+.link-to-view-more {
+  color: #be161e !important;
+}
+.hide-replies {
+  display: none;
+}
+.img-medium {
+  width: 83px !important;
+  height: 83px !important;
+}
+.hidden-overflow {
+  overflow: hidden !important;
+  max-height: 98px;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.hidden-overflow p {
+  overflow: hidden !important;
+}

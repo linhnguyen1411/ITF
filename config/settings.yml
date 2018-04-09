@@ -13,3 +13,7 @@ tag:
   limit_for_search: 5
   max_name: 50
   min_name: 3
+reply:
+  limit_for_children_replies: 3
+zero: 0
+paginate_default: 10

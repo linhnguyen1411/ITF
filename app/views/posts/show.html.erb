@@ -8,7 +8,7 @@
           <div class="col-md-6 col-sm-5 co-xs-12 text-right">
             <div class="bread">
               <ol class="breadcrumb">
-                <li><%= link_to t("page_title.home"), root_path %></a></li>
+                <li><%= link_to t("page_title.home"), root_path %></li>
                 <li class="active"><%= t ".#{@post.type}.breadcrumb" %></li>
               </ol>
             </div>
@@ -34,163 +34,44 @@
                   </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <%= raw @post.content %>
-                  <div class="tagcloud"> <a href="#">html</a> <a href="#">css</a> <a href="#">bootstrap</a> </div>
+                  <div class="post-content margin-bottom-20">
+                    <%= raw @post.content %>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-30">
+                      <%= link_to "javascript:void(0)", data: {post_id: @post.id, post_type: @post.type,
+                        parent_id: ""}, class: "show-reply-form btn btn-primary btn-small" do %>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <%= t ".#{@post.type}.post_reply" %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-9 col-sm-8 col-xs-12 margin-bottom-30">
+                      <div class="tagcloud pull-right">
+                        <% @post.tags.each do |tag| %>
+                          <%= link_to tag.name, tag %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="reply_form_"></div>
                 </div>
               </div>
             </div>
-            <!-- Question Listing End -->
-
             <div class="clearfix"></div>
-            <!-- Thread Reply -->
             <div class="thread-reply">
-              <h2>Thread Reply </h2>
-
-              <!-- Reply Grid -->
-              <div class="media-block card-box ribbon-content">
-                <div class="ribbon base"><span>Correct Answer</span>
-                </div>
-
-                <div class="media-left">
-                  <a data-toggle="tooltip" data-placement="bottom" data-original-title="Martina Jaz" href="#">
-                    <img class="img-sm" alt="Profile Picture" src="images/authors/9.jpg">
-
-                  </a>
-
-                </div>
-                <div class="media-body">
-                  <div class="mar-btm">
-                    <h4><a href="#" class="btn-link text-semibold media-heading box-inline">Muhammad Umair</a></h4>
-                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
-                  </div>
-                  <p>I think this is what you are looking for. You need to remove the <code>float: left</code> from the inner nav to center it and make it a inline-block.</p>
-                  <pre class="brush: php syntaxhighlight">
-                        .navbar .navbar-nav {
-                          display: inline-block;
-                          float: none;
-                          vertical-align: top;
-                        }
-
-                        .navbar .navbar-collapse {
-                          text-align: center;
-                        }
-                                </pre>
-                  <p><strong>Edit: </strong>if you only want this effect to happen when the nav isn't collapsed surround it in the appropriate media query.</p>
-                  <pre class="brush: php syntaxhighlight">
-                        @media (min-width: 768px) {
-                            .navbar .navbar-nav {
-                                display: inline-block;
-                                float: none;
-                                vertical-align: top;
-                            }
-
-                            .navbar .navbar-collapse {
-                                text-align: center;
-                            }
-                        }
-                                </pre>
-                  <div class="pad-ver pull-right">
-
-                    <a class="btn btn-sm btn-default btn-hover-success" data-toggle="tooltip" data-placement="bottom" data-original-title="Like This Answer" href="#"><i class="fa fa-thumbs-up"></i></a>
-                    <a class="btn btn-sm btn-default btn-hover-danger" href="#" data-original-title="Spam" data-placement="bottom" data-toggle="tooltip"><i class="fa fa-thumbs-down"></i></a>
-
-                  </div>
-
-                </div>
-              </div>
-              <!-- Reply Grid End -->
-              <!-- Reply Grid -->
-              <div class="media-block card-box ">
-
-                <div class="media-left">
-                  <a href="#">
-                    <img class="img-sm" alt="Profile Picture" src="images/authors/7.jpg">
-
-                  </a>
-
-                </div>
-                <div class="media-body">
-                  <div class="mar-btm">
-                    <h4><a href="#" class="btn-link text-semibold media-heading box-inline">Martina Jaz</a></h4>
-                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 21 min ago</p>
-                  </div>
-                  <p>I think this is what you are looking for. You need to remove the <code>float: left</code> from the inner nav to center it and make it a inline-block.</p>
-                  <pre class="brush: php syntaxhighlight">
-$('#nav').affix({
-      offset: {
-        top: $('header').height()
-      }
-});
-                                </pre>
-                  <div class="pad-ver pull-right">
-
-                    <a class="btn btn-sm btn-default btn-hover-success" data-toggle="tooltip" data-placement="bottom" data-original-title="Like This Answer" href="#"><i class="fa fa-thumbs-up"></i></a>
-                    <a class="btn btn-sm btn-default btn-hover-danger" href="#" data-original-title="Spam" data-placement="bottom" data-toggle="tooltip"><i class="fa fa-thumbs-down"></i></a>
-
-                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Mark As Correct</a>
-                  </div>
-
-                </div>
-              </div>
-              <!-- Reply Grid End -->
-              <!-- Reply Grid -->
-              <div class="media-block card-box ">
-
-                <div class="media-left">
-                  <a href="#">
-                    <img class="img-sm" alt="Profile Picture" src="images/authors/6.jpg">
-
-                  </a>
-
-                </div>
-                <div class="media-body">
-                  <div class="mar-btm">
-                    <h4><a href="#" class="btn-link text-semibold media-heading box-inline">John Doe</a></h4>
-                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 40 min ago</p>
-                  </div>
-                  <p>I think this is what you are looking for. You need to remove the <code>float: left</code> from the inner nav to center it and make it a inline-block.</p>
-                  <pre class="brush: php syntaxhighlight">
-$(function(){
-    $('.block').affix();
-})
-                                </pre>
-                  <div class="pad-ver pull-right">
-
-                    <a class="btn btn-sm btn-default btn-hover-success" data-toggle="tooltip" data-placement="bottom" data-original-title="Like This Answer" href="#"><i class="fa fa-thumbs-up"></i></a>
-                    <a class="btn btn-sm btn-default btn-hover-danger" href="#" data-original-title="Spam" data-placement="bottom" data-toggle="tooltip"><i class="fa fa-thumbs-down"></i></a>
-
-                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Mark As Correct</a>
-                  </div>
-
-                </div>
-              </div>
-              <!-- Reply Grid End -->
-
-              <div class="clearfix"></div>
-
-              <form>
-                <div class="form-group">
-                  <label>Post Your Answer</label>
-                  <textarea cols="12" rows="7" class="form-control" placeholder="I Have The Aswert"></textarea>
-                </div>
-
-                <button class="btn btn-primary btn-lg btn-block">Post Your Answer</button>
-
-              </form>
-
+              <h2><%= t ".#{@post.type}.thread_reply" %></h2>
+              <%= render partial: "reply", collection: @replies %>
             </div>
-            <!-- Thread Reply End -->
           </div>
 
-          <!-- Right Sidebar -->
           <div class="col-md-4 col-sm-12 col-xs-12 clearfix">
-
-            <!-- sidebar -->
             <div class="side-bar">
               <div class="widget">
-                <div class="widget-image widget-image-sm"> <img alt="image" src="images/light-background.jpg">
-                  <div class="widget-image-content text-center"> <img class="img-thumbnail" alt="avatar" src="images/authors/12.jpg">
-                    <h2 class="widget-heading text-light"><strong>John Doe</strong></h2>
+                <div class="widget-image widget-image-sm">
+                  <%= image_tag "light-background.jpg" %>
+                  <div class="widget-image-content text-center">
+                    <%= image_tag @post.user.avatar.url, class: "img-thumbnail" %>
+                    <h2 class="widget-heading text-light"><strong><%= @post.user.name %></strong></h2>
                     <h4 class="widget-heading text-light-op"><em>Graphic Designer</em></h4>
                   </div>
                 </div>
@@ -217,7 +98,6 @@ $(function(){
                 </div>
               </div>
 
-              <!-- widget -->
               <div class="widget">
                 <div class="recent-comments">
                   <h2>Hot Questions</h2>
@@ -240,9 +120,7 @@ $(function(){
                   </ul>
                 </div>
               </div>
-              <!-- widget -->
 
-              <!-- widget -->
               <div class="widget">
                 <div class="recent-comments">
                   <h2>Recent Comments</h2>
@@ -257,105 +135,9 @@ $(function(){
                   </ul>
                 </div>
               </div>
-              <!-- widget end -->
-
             </div>
-            <!-- sidebar end -->
           </div>
-          <!-- Right Sidebar End -->
-
         </div>
-        <!-- Row End -->
       </div>
     </section>
-    <!-- =-=-=-=-=-=-= Question Details end =-=-=-=-=-=-= -->
-
-    <!-- =-=-=-=-=-=-= Our Clients =-=-=-=-=-=-= -->
-    <section class="custom-padding" id="clients">
-      <div class="container">
-
-        <!-- Row -->
-        <div class="row">
-
-          <!-- col-md-2 client-block -->
-          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
-
-            <!-- client-item client-item-style-2 -->
-            <div class="client-item client-item-style-2">
-              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_5.png"> </a>
-            </div>
-            <!-- /client-item client-item-style-2 -->
-
-          </div>
-          <!-- /col-md-2 client-block -->
-
-          <!-- col-md-2 client-block -->
-          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
-
-            <!-- client-item client-item-style-2 -->
-            <div class="client-item client-item-style-2">
-              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_6.png"> </a>
-            </div>
-            <!-- /client-item client-item-style-2 -->
-
-          </div>
-          <!-- /col-md-2 client-block -->
-
-          <!-- col-md-2 client-block -->
-          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
-
-            <!-- client-item client-item-style-2 -->
-            <div class="client-item client-item-style-2">
-              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_7.png"> </a>
-            </div>
-            <!-- /client-item client-item-style-2 -->
-
-          </div>
-          <!-- /col-md-2 client-block -->
-
-          <!-- col-md-2 client-block -->
-          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
-
-            <!-- client-item client-item-style-2 -->
-            <div class="client-item client-item-style-2">
-              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_8.png"> </a>
-            </div>
-            <!-- /client-item client-item-style-2 -->
-
-          </div>
-          <!-- /col-md-2 client-block -->
-
-          <!-- col-md-2 client-block -->
-          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
-
-            <!-- client-item client-item-style-2 -->
-            <div class="client-item client-item-style-2">
-              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_9.png"> </a>
-            </div>
-            <!-- /client-item client-item-style-2 -->
-
-          </div>
-          <!-- /col-md-2 client-block -->
-
-          <!-- col-md-2 client-block -->
-          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
-
-            <!-- client-item client-item-style-2 -->
-            <div class="client-item client-item-style-2">
-              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_10.png"> </a>
-            </div>
-            <!-- /client-item client-item-style-2 -->
-
-          </div>
-          <!-- /col-md-2 client-block -->
-
-        </div>
-        <!-- Row End -->
-
-      </div>
-      <!-- end container -->
-    </section>
-    <!-- =-=-=-=-=-=-= Our Clients -end =-=-=-=-=-=-= -->
-
   </div>
-  <!-- =-=-=-=-=-=-= Main Area End =-=-=-=-=-=-= -->

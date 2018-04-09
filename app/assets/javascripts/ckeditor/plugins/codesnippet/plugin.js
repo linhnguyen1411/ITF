@@ -70,30 +70,18 @@
       if ( !editor._.codesnippet.highlighter ) {
         var hljsHighlighter = new CKEDITOR.plugins.codesnippet.highlighter( {
           languages: {
-            apache: 'Apache',
-            bash: 'Bash',
-            coffeescript: 'CoffeeScript',
             cpp: 'C++',
             cs: 'C#',
             css: 'CSS',
-            diff: 'Diff',
             html: 'HTML',
-            http: 'HTTP',
-            ini: 'INI',
             java: 'Java',
             javascript: 'JavaScript',
             json: 'JSON',
-            makefile: 'Makefile',
-            markdown: 'Markdown',
-            nginx: 'Nginx',
             objectivec: 'Objective-C',
-            perl: 'Perl',
             php: 'PHP',
             python: 'Python',
             ruby: 'Ruby',
             sql: 'SQL',
-            vbscript: 'VBScript',
-            xhtml: 'XHTML',
             xml: 'XML'
           },
 
@@ -329,7 +317,10 @@
         if ( newData.code ){
           this.parts.pre.setHtml( CKEDITOR.tools.htmlEncode( newData.code ) );
           this.parts.pre.addClass( 'brush:' );
-          var lang = newData.lang ? newData.lang : 'php'
+          if(["xml", "html", "xhtml", null].includes(newData.lang))
+            var lang = 'php'
+          else
+            var lang = newData.lang
           this.parts.pre.addClass( lang + ';' );
           this.parts.pre.addClass( 'syntaxhighlight' );
         }

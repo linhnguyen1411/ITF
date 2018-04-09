@@ -1,0 +1,58 @@
+<div class="media-block card-box ribbon-content">
+  <% if reply.correct_answer %>
+    <div class="ribbon base"><span><%= t ".correct_answer" %></span></div>
+  <% end %>
+
+  <div class="media-left">
+    <%= link_to reply.user, data: {toggle: "tooltip", placement: "bottom",
+      original_title: reply.user.name} do %>
+      <% image_tag reply.user.avatar.url, class: "img-sm img-thumbnail" %>
+    <% end %>
+  </div>
+  <div class="media-body">
+    <div class="mar-btm">
+      <h4 class="pull-left">
+        <%= link_to reply.user.name, reply.user,
+        class: "btn-link text-semibold media-heading box-inline" %>
+      </h4>
+      <p class="text-muted text-sm pull-right">
+        <i class="fa fa-clock-o"></i>
+        <%= time_ago_in_words reply.created_at %>
+      </p>
+    </div>
+    <div class="reply-content">
+      <%= raw reply.content %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-30">
+        <%= link_to "javascript:void(0)", data: {post_id: reply.post_id, post_type: "",
+          parent_id: reply.id}, class: "show-reply-form btn btn-primary btn-small" do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <%= t ".reply" %>
+        <% end %>
+      </div>
+      <div class="col-md-9 col-sm-8 col-xs-12 margin-bottom-30">
+        <div class="pad-ver pull-right">
+          <a class="btn btn-sm btn-default btn-hover-success" data-toggle="tooltip" data-placement="bottom" data-original-title="Like This Answer" href="#"><i class="fa fa-thumbs-up"></i></a>
+          <a class="btn btn-sm btn-default btn-hover-danger" href="#" data-original-title="Spam" data-placement="bottom" data-toggle="tooltip"><i class="fa fa-thumbs-down"></i></a>
+        </div>
+      </div>
+    </div>
+    <div id="reply_form_<%= reply.id %>"></div>
+    <div id="children_replies_<%= reply.id %>">
+      <% if reply.children_replies.present? %>
+        <div class="border-bottom-1 margin-bottom-30"></div>
+        <div class="thread-children-reply">
+          <%= render partial: "children_reply", as: :reply, collection: reply.children_replies %>
+          <% if view_more_replies? reply.children_replies.length %>
+          <div class="view-more">
+            <%= link_to link_to_view_more_replies(reply.children_replies.length),
+              "javascript:void(0)", class: "link-to-view-more" %>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
