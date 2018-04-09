@@ -118,3 +118,7 @@ en:
   flash:
     load:
       not_found: "Not found"
+  reactions:
+    target_type:
+      like: "Like"
+      spam: "Spam"

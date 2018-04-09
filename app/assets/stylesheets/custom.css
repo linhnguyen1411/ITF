@@ -99,3 +99,15 @@
 .hidden-overflow p {
   overflow: hidden !important;
 }
+.children-replies {
+  margin-left: 10%;
+}
+.no-padding-left {
+  padding-left: 0px !important;
+}
+.tooltip {
+  position: fixed !important;
+}
+.reacted {
+  color: blue !important;
+}

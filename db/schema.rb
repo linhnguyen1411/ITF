@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402143035) do
+ActiveRecord::Schema.define(version: 20180409123313) do
 
   create_table "post_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "post_id"
@@ -30,9 +30,24 @@ ActiveRecord::Schema.define(version: 20180402143035) do
     t.bigint "series_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count_replies"
+    t.integer "replies_count"
     t.index ["deleted_at"], name: "index_posts_on_deleted_at"
     t.index ["series_id"], name: "index_posts_on_series_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "reactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "target_type"
+    t.datetime "deleted_at"
+    t.bigint "user_id"
+    t.string "reactiontable_type"
+    t.bigint "reactiontable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_reactions_on_deleted_at"
+    t.index ["reactiontable_type", "reactiontable_id"], name: "index_reactions_on_reactiontable_type_and_reactiontable_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -94,6 +109,7 @@ ActiveRecord::Schema.define(version: 20180402143035) do
   add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "series"
   add_foreign_key "posts", "users"
+  add_foreign_key "reactions", "users"
   add_foreign_key "replies", "posts"
   add_foreign_key "replies", "users"
   add_foreign_key "series", "users"
