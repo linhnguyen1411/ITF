@@ -1,0 +1,40 @@
+<div class="modal fade" id="reaction_modal">
+  <div class="modal-dialog">
+    <div class="modal-content reactions-custom-modal">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t "reactions.all_reactions" %></h4>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" id="tabContent">
+          <li class="active">
+            <a href="#likes" data-toggle="tab" class="reacted">
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+              <%= reaction_count reactions, Settings.reaction.like %>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content reactions-tab">
+          <div class="tab-pane active" id="likes">
+            <% group_reactions(reactions)[Settings.reaction.like].try(:each) do |like| %>
+              <div class="row reaction-user-list">
+                <div class="col-md-8">
+                  <%= image_tag like.user.avatar.url, class: "img-circle img-25"  %>
+                  <%= link_to like.user.name, like.user, class: "padding-left-10" %>
+                </div>
+                <div class="col-md-4">
+                  <%= link_to t("reactions.follow"), "javascript:void(0)",
+                    class: "btn btn-success btn-xs anonymous pull-right" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-xs btn-primary btn-accept-edit-comment" data-dismiss="modal">
+          <%= t "close" %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

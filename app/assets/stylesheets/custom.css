@@ -79,7 +79,7 @@
   display: flow-root;
 }
 .link-to-view-more {
-  color: #be161e !important;
+  color: blue !important;
 }
 .hide-replies {
   display: none;
@@ -98,4 +98,57 @@
 }
 .hidden-overflow p {
   overflow: hidden !important;
+}
+.children-replies {
+  margin-left: 10%;
+}
+.no-padding-left {
+  padding-left: 0px !important;
+}
+.tooltip {
+  position: fixed !important;
+}
+.reacted, .reacted .fa-thumbs-down, .reacted .fa-thumbs-up {
+  color: #be161e !important;
+}
+.liked-list {
+  color: blue !important;
+}
+.blue-background {
+  color: white !important;
+  background-color: blue;
+  height: 21px;
+  width: 21px;
+  border-radius: 100%;
+  text-align: center;
+  padding-top: 4px;
+  font-size: 12px !important;
+}
+.font-size-12 {
+  font-size: 12px !important;
+}
+.fa-thumbs-down, .fa-thumbs-up {
+  color: #999;
+}
+.img-25 {
+  width: 25px;
+}
+.modal .modal-header {
+  background-color: #be161e;
+  color: white;
+}
+.reaction-user-list {
+  padding-top: 10px;
+}
+.reactions-tab.reactions-tab {
+  margin-top: 0px;
+}
+.padding-left-10 {
+  padding-left: 10px;
+}
+.blue-color {
+  color: blue;
+}
+.red-color {
+  color: #be161e !important;
 }

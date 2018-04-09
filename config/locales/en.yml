@@ -1,6 +1,6 @@
 en:
   hello: "Hello world"
-
+  close: "Close"
   layouts:
     header:
       home: "Home"
@@ -86,6 +86,7 @@ en:
     reply:
       view_more: "View more "
       replies: " replies"
+      reply: "Reply"
     index:
       article:
         page_title: "All Article"
@@ -93,6 +94,12 @@ en:
       question:
         page_title: "All Question"
         breadcrumb: "Question Listing"
+    post:
+      article:
+        replies: "Comments"
+      question:
+        replies: "Answers"
+      votes: "Votes"
   replies:
     new:
       article:
@@ -118,3 +125,12 @@ en:
   flash:
     load:
       not_found: "Not found"
+  reactions:
+    target_type:
+      like: "Like"
+      spam: "Spam"
+    all_reactions: "All Reations"
+    follow: "Follow"
+    other: "other"
+    you_and: "you and "
+    and: " and "

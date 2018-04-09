@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @replies = Reply.by_post @post
+    @replies = Reply.by_post(@post).includes_full
   end
 
   def create

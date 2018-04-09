@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :replies
   has_many :series
+  has_many :reactions
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable

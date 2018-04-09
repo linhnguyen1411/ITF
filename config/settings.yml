@@ -16,4 +16,8 @@ tag:
 reply:
   limit_for_children_replies: 3
 zero: 0
+one: 1
 paginate_default: 10
+reaction:
+  like: "like"
+  spam: "spam"

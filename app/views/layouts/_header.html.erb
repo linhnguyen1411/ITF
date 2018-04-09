@@ -73,10 +73,10 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="hidden-sm">
-          <%= link_to t(".article"), posts_path(type: :article) %>
+          <%= link_to t(".article"), posts_path(type: :article), class: "#{"red-color" if params[:type] == "article"}" %>
         </li>
         <li class="hidden-sm">
-          <%= link_to t(".question"), posts_path(type: :question) %>
+          <%= link_to t(".question"), posts_path(type: :question), class: "#{"red-color" if params[:type] == "question"}"%>
         </li>
         <li class="dropdown"> <a class="dropdown-toggle " data-hover="dropdown" data-toggle="dropdown" data-animations="fadeInUp">Pages <b class="caret"></b></a>
           <ul class="dropdown-menu">

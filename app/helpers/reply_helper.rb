@@ -12,4 +12,14 @@ module ReplyHelper
   def hide_replies? reply_counter
     reply_counter >= Settings.reply.limit_for_children_replies
   end
+
+  def order_replies replies
+    replies.partition{ |reply| reply.user_id == current_user.id }.flatten
+  end
+
+  private
+
+  def replies_by_user replies
+    replies.select { |reply| reply.user_id == current_user.id }
+  end
 end
