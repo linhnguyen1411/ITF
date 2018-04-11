@@ -18,7 +18,7 @@
             <% group_reactions(reactions)[Settings.reaction.like].try(:each) do |like| %>
               <div class="row reaction-user-list">
                 <div class="col-md-8">
-                  <%= image_tag like.user.avatar.url, class: "img-circle img-25"  %>
+                  <%= image_tag like.user.avatar.url, class: "img-circle img-25 img-border" %>
                   <%= link_to like.user.name, like.user, class: "padding-left-10" %>
                 </div>
                 <div class="col-md-4">

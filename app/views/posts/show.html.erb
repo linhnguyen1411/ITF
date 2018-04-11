@@ -23,7 +23,10 @@
           <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
             <div class="listing-grid ">
               <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-1 col-sm-1 col-xs-2 vote-post">
+                  <%= render "posts/reaction_button", reactions: @votes, reactionable: @post %>
+                </div>
+                <div class="col-md-11 col-sm-11 col-xs-10">
                   <h3><%= @post.title %></h3>
                   <div class="listing-meta">
                     <span>
@@ -33,7 +36,7 @@
                     <span><i class="fa fa fa-eye" aria-hidden="true"></i> 750 Views</span>
                   </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-11 col-sm-11 col-xs-10">
                   <div class="post-content margin-bottom-20">
                     <%= raw @post.content %>
                   </div>
