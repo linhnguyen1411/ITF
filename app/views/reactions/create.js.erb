@@ -1,0 +1,3 @@
+<% if @success %>
+  $('#reaction_of_reply_<%= @reply.id %>').html('<%= j(render"posts/reaction_button", reply: @reply, reactions: @reactions) %>')
+<% end %>

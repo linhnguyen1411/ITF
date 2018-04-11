@@ -1,0 +1,22 @@
+<div class="pad-ver pull-right" id="reaction_of_reply_<%= reply.id %>">
+  <% unless reaction_count(reactions, Settings.reaction.like).zero? %>
+    <%= link_to reactions_path(type: reply.class.name, id: reply.id), class: "liked-list font-size-12", remote: true do %>
+      <i class="fa fa-thumbs-up blue-background"></i>
+      <%= label_liked_user_list reactions %>
+    <% end %>
+  <% end %>
+  <%= link_to "javascript:void(0)", class: "btn btn-sm btn-default btn-reaction
+    #{"reacted" if current_user_reacted? reactions, Settings.reaction.like}",
+    data: {toggle: "tooltip", placement: "bottom", original_title: t("reactions.target_type.like"),
+    target: "like", id: reply.id, type: reply.class.name} do %>
+    <%= reaction_count reactions, Settings.reaction.like %>
+    <i class="fa fa-thumbs-up"></i>
+  <% end %>
+  <%= link_to "javascript:void(0)", class: "btn btn-sm btn-default btn-reaction
+    #{"reacted" if current_user_reacted? reactions, Settings.reaction.spam}",
+    data: {toggle: "tooltip", placement: "bottom", target: "spam", id: reply.id,
+    original_title: t("reactions.target_type.spam"), type: reply.class.name} do %>
+    <%= reaction_count reactions,  Settings.reaction.spam%>
+    <i class="fa fa-thumbs-down"></i>
+  <% end %>
+</div>
