@@ -23,6 +23,11 @@ module ReactionHelper
     reactions.group_by{|reaction| reaction.target_type}
   end
 
+  def votes_count reactions
+    count = reaction_count(reactions, Settings.reaction.upvote) - reaction_count(reactions, Settings.reaction.downvote)
+    count > Settings.zero ? "+" + count.to_s : count
+  end
+
   private
 
   def get_next_user liked_list

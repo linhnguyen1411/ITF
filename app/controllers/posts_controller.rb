@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: [:show]
+  before_action :load_post, only: [:show, :post]
 
   def new
     @post = Post.new
@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def show
     @replies = Reply.by_post(@post).includes_full
+    @votes = @post.reactions.include_user
   end
 
   def create

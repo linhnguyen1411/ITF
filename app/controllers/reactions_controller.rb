@@ -11,8 +11,8 @@ class ReactionsController < ApplicationController
       reaction.target_type = Reaction.target_types[params[:target_type]]
       reaction.save
     end
-    @reply = reaction.reactionable
-    @reactions = @reply.reactions.include_user
+    @reactionable = reaction.reactionable
+    @reactions = @reactionable.reactions.include_user
   end
 
   private

@@ -21,7 +21,7 @@
       <%= raw reply.content %>
     </div>
     <div class="pad-ver pull-right">
-      <%= render "posts/reaction_button", reactions: reply.reactions, reply: reply %>
+      <%= render "posts/reaction_button", reactions: reply.reactions, reactionable: reply %>
     </div>
     <div id="reply_form_<%= reply.id %>"></div>
   </div>

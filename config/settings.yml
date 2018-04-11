@@ -21,3 +21,5 @@ paginate_default: 10
 reaction:
   like: "like"
   spam: "spam"
+  upvote: "upvote"
+  downvote: "downvote"

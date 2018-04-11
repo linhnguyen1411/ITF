@@ -15,14 +15,14 @@
     </div>
     <div class="col-md-3 col-sm-2 col-xs-12">
       <ul class="question-statistic">
-        <li>
+        <li class="active">
           <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".#{post.type}.replies" %>">
             <span class="red-color"><i class="fa fa-reply" aria-hidden="true"></i><%= post.replies_count %></span>
           </a>
         </li>
         <li>
           <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".votes" %>">
-            <span class="red-color"><i class="fa fa-sort" aria-hidden="true"></i><%= post.votes_count %></span>
+            <span class="red-color"><i class="fa fa-sort" aria-hidden="true"></i><%= votes_count post.reactions %></span>
           </a>
         </li>
       </ul>
