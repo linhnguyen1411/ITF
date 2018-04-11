@@ -132,6 +132,7 @@
 }
 .img-25 {
   width: 25px;
+  height: 25px;
 }
 .modal .modal-header {
   background-color: #be161e;
@@ -151,4 +152,37 @@
 }
 .red-color {
   color: #be161e !important;
+}
+.bold-text {
+  font-weight: bold;
+}
+.btn-vote {
+  font-size: 45px;
+  color: #999;
+  vertical-align: text-bottom;
+}
+.btn-vote i {
+  line-height: 0px;
+}
+.btn-vote:hover {
+  color: #999;
+}
+.black-color {
+  color: black;
+}
+.top-bar {
+  position: fixed;
+  top: 0px;
+  z-index: 1111;
+  width: 100%;
+}
+.vote-post {
+  box-shadow: 2px 2px 1px 1px grey;
+  border-radius: 10px
+}
+.navbar-default {
+  margin-top: 45px;
+}
+.vote-post h1 {
+  line-height: 40px;
 }

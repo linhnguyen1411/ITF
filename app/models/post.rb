@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   has_many :replies, -> { where parent_id: nil }
-  has_many :reactions
+  has_many :reactions, as: :reactionable, dependent: :destroy
 
   enum type: {article: 0, question: 1}
 
@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   scope :includes_full, -> do
-    merge(include_user).merge(include_tags).merge include_replies_count
+    merge(include_user).merge(include_tags).merge(include_replies_count).merge include_reactions
 
 
   end
@@ -23,6 +23,7 @@ class Post < ApplicationRecord
 
   scope :include_user, -> {includes(:user)}
   scope :include_tags, -> {includes(:tags)}
+  scope :include_reactions, -> {includes(:reactions)}
   scope :include_replies_count, -> do
     left_joins(:replies).group("posts.id").select("posts.*, count(replies.id) as replies_count")
   end

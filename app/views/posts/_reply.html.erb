@@ -33,7 +33,7 @@
         <% end %>
       </div>
       <div class="col-md-9 col-sm-8 col-xs-12 margin-bottom-30">
-        <%= render "posts/reaction_button", reactions: reply.reactions, reply: reply %>
+        <%= render "posts/reaction_button", reactions: reply.reactions, reactionable: reply %>
       </div>
     </div>
     <div id="reply_form_<%= reply.id %>"></div>
