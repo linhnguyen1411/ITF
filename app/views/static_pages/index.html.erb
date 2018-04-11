@@ -1,1 +1,277 @@
-﻿
+﻿<div class="full-section search-section">
+  <div class="search-area container">
+    <h3 class="search-title"><%= t ".search_title" %></h3>
+    <p class="search-tag-line"><%= t ".introduce_search" %></p>
+    <form autocomplete="off" method="get" class="search-form clearfix" id="search-form">
+      <input type="text" title="* Please enter a search term!" placeholder="Type your search terms here" class="search-term " autocomplete="off">
+      <input type="submit" value="Search" class="search-btn">
+    </form>
+  </div>
+</div>
+<div class="main-content-area">
+  <section class="custom-padding" id="how-it-work">
+    <div class="container">
+      <div class="main-heading text-center">
+        <h2><%= t ".how_it_work"%></h2>
+        <div class="slices"><span class="slice"></span><span class="slice"></span><span class="slice"></span>
+        </div>
+        <p><%= t ".introduce_use"%></p>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-md-4 col-xs-12 center-responsive">
+          <%= image_tag "step1.png", class: "img-responsive" %>
+          <h4><a href="#"><%= t ".create_account"%></a></h4>
+        </div>
+        <div class="col-sm-4 col-md-4 col-xs-12 center-responsive get-arrow">
+          <%= image_tag "step2.png", class: "img-responsive" %>
+          <h4><a href="#"><%= t ".create_post"%></a></h4>
+        </div>
+        <div class="col-sm-4 col-md-4 col-xs-12 center-responsive get-arrow">
+          <%= image_tag "step3.png", class: "img-responsive" %>
+          <h4><a href="#"><%= t ".find_or_study"%></a></h4>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+  <section class="section-padding-80 white" id="latest-post">
+    <div class="container">
+      <div class="main-heading text-center">
+        <h2><%= t "hightest_votes_question" %></h2>
+        <div class="slices">
+          <span class="slice"></span><span class="slice"></span><span class="slice"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-sm-12">
+          <div class="listing">
+            <div class="listing-area">
+              <%= render partial: "posts/post", collection: @posts %>
+              <div class="text-center clearfix">
+                <%= paginate @posts %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 clearfix">
+            <div class="side-bar">
+              <div class="widget">
+                <h2>Top Authors</h2>
+                <hr class="widget-separator no-margin">
+                <div class="media-group">
+                  <div class="media-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <div class="avatar avatar-md avatar-circle">
+                          <%= image_tag "no_avatar.png" %>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="profile.html">John Doe</a></h5>
+                        <small class="media-meta">Web Developer</small>
+                        <div class="points"><span>Points : </span>7458</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="media-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <div class="avatar avatar-md avatar-circle">
+                          <%= image_tag "no_avatar.png" %>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="profile.html">Sara Smith</a></h5>
+                        <small class="media-meta">UI/UX Designer</small>
+                        <div class="points"><span>Points : </span>6458</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="media-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <div class="avatar avatar-md avatar-circle">
+                          <%= image_tag "no_avatar.png" %>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="profile.html">Dani Smith</a></h5>
+                        <small class="media-meta">Teacher Assistant</small>
+                        <div class="points"><span>Points : </span>6115</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="media-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <div class="avatar avatar-md avatar-circle">
+                          <%= image_tag "no_avatar.png" %>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="profile.html">Sally Sally</a></h5>
+                        <small class="media-meta">Teacher Assistant</small>
+                        <div class="points"><span>Points : </span>5558</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="media-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <div class="avatar avatar-md avatar-circle">
+                          <%= image_tag "no_avatar.png" %>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="profile.html">Sally Sally</a></h5>
+                        <small class="media-meta">Teacher Assistant</small>
+                        <div class="points"><span>Points : </span>5558</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- widget end -->
+            </div>
+            <!-- sidebar end -->
+          </div>
+        <!-- Right Sidebar End -->
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- end container -->
+  </section>
+  <section class="parallex section-padding fun-facts-bg text-center" data-stellar-background-ratio="0.1">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-sm-3 col-md-3">
+          <div class="statistic-percent" data-perc="356">
+            <div class="facts-icons"> <span class="icon-trophy"></span>
+            </div>
+            <div class="fact"> <span class="percentfactor">356</span>
+              <p>Happy Clients</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3">
+          <div class="statistic-percent" data-perc="126">
+            <div class="facts-icons"> <span class="icon-trophy"></span>
+            </div>
+            <div class="fact"> <span class="percentfactor">126</span>
+              <p>Order Received</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3">
+          <div class="statistic-percent" data-perc="274">
+            <div class="facts-icons"> <span class="icon-chat"></span>
+            </div>
+            <div class="fact"> <span class="percentfactor">274</span>
+              <p>Free Delivery</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3">
+          <div class="statistic-percent" data-perc="434">
+            <div class="facts-icons"> <span class="icon-megaphone"></span>
+            </div>
+            <div class="fact"> <span class="percentfactor">434</span>
+              <p>Completed Projects</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="blog" class="custom-padding">
+    <div class="container">
+      <div class="main-heading text-center">
+        <h2>Latest Articles</h2>
+        <div class="slices">
+          <span class="slice"></span><span class="slice"></span><span class="slice"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="blog-grid">
+            <div class="blog-image">
+              <%= image_tag "blog/1.jpg", class: "img-responsive" %>
+            </div>
+            <div class="blog-content">
+              <h5><a href="blog-detail.html">How to prevent my website from being scrolled horizontally?</a></h5>
+              <ul class="post-meta">
+                <li>By Admin</li>
+                <li>Php</li>
+                <li>27 July 2016</li>
+              </ul>
+              <p>We can make table scrollable by adding table-responsive class to it, but how can we loop it so that once the loop ends..</p>
+            </div>
+            <div class="blog-footer">
+              <ul class="like-comment">
+                <li><a href="#"><i class="icon-heart"></i>23</a>
+                </li>
+                <li><a href="#"><i class="icon-chat"></i>32</a>
+                </li>
+              </ul> <a href="#" class="more-btn pull-right"><i class="fa fa-long-arrow-right"></i> MORE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="blog-grid">
+            <div class="blog-image">
+              <%= image_tag "blog/2.jpg", class: "img-responsive" %>
+            </div>
+            <div class="blog-content">
+              <h5><a href="blog-detail.html">What's the best way to implement a 2D interval search in C++?</a></h5>
+              <ul class="post-meta">
+                <li>By Admin</li>
+                <li>Php</li>
+                <li>27 July 2016</li>
+              </ul>
+              <p>We can make table scrollable by adding table-responsive class to it, but how can we loop it so that once the loop ends..</p>
+            </div>
+            <div class="blog-footer">
+              <ul class="like-comment">
+                <li><a href="#"><i class="icon-heart"></i>23</a>
+                </li>
+                <li><a href="#"><i class="icon-chat"></i>32</a>
+                </li>
+              </ul> <a href="#" class="more-btn pull-right"><i class="fa fa-long-arrow-right"></i> MORE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="blog-grid">
+            <div class="blog-image">
+              <%= image_tag "blog/3.jpg", class: "img-responsive" %>
+            </div>
+            <div class="blog-content">
+              <h5><a href="blog-detail.html"> Access a list within an element of a Pandas DataFrame </a></h5>
+              <ul class="post-meta">
+                <li>By Admin</li>
+                <li>Php</li>
+                <li>27 July 2016</li>
+              </ul>
+              <p>We can make table scrollable by adding table-responsive class to it, but how can we loop it so that once the loop ends..</p>
+            </div>
+            <div class="blog-footer">
+              <ul class="like-comment">
+                <li><a href="#"><i class="icon-heart"></i>23</a>
+                </li>
+                <li><a href="#"><i class="icon-chat"></i>32</a>
+                </li>
+              </ul> <a href="#" class="more-btn pull-right"><i class="fa fa-long-arrow-right"></i> MORE</a>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="text-center clearfix section-padding-40"> <a href="javascript:void(0)" class="btn btn-lg btn-primary">View all Blog Post</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>
