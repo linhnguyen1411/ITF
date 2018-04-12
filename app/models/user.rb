@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, ImageUploader
 
   validates :name, presence: true, length: {maximum: Settings.user.max_name,
     minimum: Settings.user.min_name}

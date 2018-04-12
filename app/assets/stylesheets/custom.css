@@ -186,3 +186,25 @@
 .vote-post h1 {
   line-height: 40px;
 }
+.cover-img {
+  background: #f1f1f1;
+}
+.active-content {
+
+}
+.tag-list-in-article {
+  min-height: auto !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+  border-bottom: none !important;
+  max-height: 28px;
+  overflow: hidden;
+  height: 28px;
+}
+.no-hover {
+  background: none !important;
+}
+.zoom-img {
+  padding-right: 20px;
+  float: left;
+}

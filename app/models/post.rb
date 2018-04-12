@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :replies, -> { where parent_id: nil }
   has_many :reactions, as: :reactionable, dependent: :destroy
 
+  mount_uploader :cover_image, ImageUploader
+
   enum type: {article: 0, question: 1}
 
   validates :title, presence: true, length: {maximum: Settings.post.max_title,

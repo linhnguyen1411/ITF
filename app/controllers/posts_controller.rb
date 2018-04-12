@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit :type, :title, :content
+    params.require(:post).permit :type, :title, :content, :cover_image
   end
 
   def save_post_tags post, tag

@@ -34,6 +34,18 @@
                   <%= f.select :type, options_for_select(list_of_post_types), {},class: "form-control" %>
                 </div>
                 <div class="form-group">
+                  <%= f.label :cover_image %>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <span class="btn btn-default btn-file">
+                        <%= t ".browse" %>
+                        <%= f.file_field :cover_image, accept: Settings.images.accepted_files, id: "imgInp" %>
+                      </span>
+                    </span>
+                    <input type="text" class="form-control" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
                   <%= f.label :title %><span class="bold-red-text"> *</span>
                   <%= f.text_field :title, maxlength: Settings.post.max_title, placeholder: t(".placeholder.title"),
                     minlength: Settings.post.min_title, required: true, class: "form-control" %>

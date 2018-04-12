@@ -64,6 +64,7 @@ en:
         title: "Your Post Title"
       content: "Content"
       submit: "Publish Your Question"
+      browse: "Browse…"
     create:
       tag_error: "is invalid"
       flash_success: "Create a successful post"
@@ -100,6 +101,7 @@ en:
       question:
         replies: "Answers"
       votes: "Votes"
+      more: "MORE"
   replies:
     new:
       article:
