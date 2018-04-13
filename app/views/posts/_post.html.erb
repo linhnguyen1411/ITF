@@ -18,7 +18,7 @@
         <ul class="question-statistic">
           <li class="active">
             <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".#{post.type}.replies" %>">
-              <span class="red-color"><i class="fa fa-reply" aria-hidden="true"></i><%= post.replies_count %></span>
+              <span class="red-color"><i class="fa fa-reply" aria-hidden="true"></i><%= post.replies.length %></span>
             </a>
           </li>
           <li>
@@ -29,7 +29,7 @@
         </ul>
       </div>
       <div class="col-md-10 col-sm-10  col-xs-12">
-        <div class="post-content margin-bottom-20 hidden-overflow">
+      <div class="post-content margin-bottom-20 hidden-overflow">
           <%= raw post.content %>
         </div>
         <div class="tagcloud pull-right">

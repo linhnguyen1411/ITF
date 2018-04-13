@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
-    @posts = Post.question.includes_full.page(params[:page]).per Settings.paginate_default
+    @posts = Post.includes_full.order_by_votes_count.page(params[:page]).per Settings.paginate_default
   end
   def question_detail
   end

@@ -16,7 +16,16 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   scope :includes_full, -> do
-    merge(include_user).merge(include_tags).merge(include_replies_count).merge include_reactions
+    merge(include_user).merge(include_tags).merge(include_replies).merge include_reactions
+  end
+  scope :order_by_votes_count, -> do
+    joins("LEFT JOIN reactions ON reactions.reactionable_id = posts.id and reactions.reactionable_type = 'Post'
+      and (target_type = #{Reaction.target_types[:upvote]} or target_type = #{Reaction.target_types[:downvote]})
+      and reactions.deleted_at is NULL")
+    .group("posts.id").order "sum(case target_type
+      when #{Reaction.target_types[:upvote]} then 1
+      when #{Reaction.target_types[:downvote]} then -1
+      else 0 end) desc"
   end
 
   private
@@ -24,7 +33,8 @@ class Post < ApplicationRecord
   scope :include_user, -> {includes(:user)}
   scope :include_tags, -> {includes(:tags)}
   scope :include_reactions, -> {includes(:reactions)}
-  scope :include_replies_count, -> do
-    left_joins(:replies).group("posts.id").select("posts.*, count(replies.id) as replies_count")
-  end
+  scope :include_replies, -> {includes(:replies)}
+  # scope :include_replies, -> do
+  #   left_joins(:replies).group("posts.id").select("posts.*, count(replies.id) as replies_count")
+  # end
 end
