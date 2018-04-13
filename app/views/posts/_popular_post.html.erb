@@ -1,0 +1,45 @@
+<% if post.question? %>
+  <div class="media-group">
+    <div class="media-group-item popular-question">
+      <div class="media">
+        <div class="media-left">
+          <div class="avatar avatar-md avatar-circle">
+            <%= image_tag post.user.avatar.url %>
+          </div>
+        </div>
+        <div class="media-body">
+          <h5 class="media-heading"><%= link_to post.title, post %></h5>
+          <small class="media-meta"><%= link_to post.user.name, post.user, class: "ash-color" %></small>
+          <div class="points pull-right">
+            <span class="border-views-count">
+              <span>
+                <i class="fa fa fa-eye" aria-hidden="true"></i>
+                <%= pluralize post.views_count, t(".view") %>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="media-group">
+    <div class="media-group-item padding-left-10">
+      <div class="media">
+        <div class="media-left">
+          <div class="avatar popular-img avatar-md avatar-circle img-border-2">
+            <%= image_tag post.cover_image.url || "no_cover_image.png",class: "img-responsive middle-img" %>
+          </div>
+        </div>
+        <div class="media-body">
+          <h5 class="media-heading"><%= link_to post.title, post %></h5>
+          <span>
+            <i class="fa fa fa-eye" aria-hidden="true"></i>
+            <%= pluralize post.views_count, t(".view") %>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

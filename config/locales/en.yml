@@ -84,6 +84,7 @@ en:
         thread_reply: "Thread answer"
       cancel_reply: "Cancel reply"
       post_reply: "Reply"
+      view: "View"
     reply:
       view_more: "View more "
       replies: " replies"
@@ -92,11 +93,19 @@ en:
       article:
         page_title: "All Article"
         breadcrumb: "Article Listing"
+        popular_post: "Popular Articles"
+        all_post: "All Articles"
       question:
         page_title: "All Question"
         breadcrumb: "Question Listing"
+        popular_post: "Popular Questions"
+        all_post: "All Questions"
+      all_users: "All Users"
+      top_users: "Top Users"
+      popular_tags: "Popular Tags"
     popular_tags: "Popular Tags"
-
+    user:
+      point: "Points : "
     post:
       article:
         replies: "Comments"
@@ -104,6 +113,11 @@ en:
         replies: "Answers"
       votes: "Votes"
       more: "MORE"
+      view: "View"
+    popular_post:
+      view: "View"
+      views: "Views: "
+      auhtors: "Authors: "
   replies:
     new:
       article:
@@ -148,6 +162,11 @@ en:
       create_post: "Post Your Question or Article"
       find_or_study: "Study The New Technology"
       hightest_votes_question: "Hightest Voted Questions"
+      top_users: "Top Users"
+      all_users: "All Users"
+      hightest_votes_article: "Hightest Voted Articles"
+      all_tag: "All Tags"
+      popular_tags: "Popular Tags"
   tags:
     show:
       follower: "Follower"

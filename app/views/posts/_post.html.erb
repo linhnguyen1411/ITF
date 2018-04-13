@@ -11,7 +11,10 @@
         <h3><%= link_to post.title, post %></h3>
         <div class="listing-meta">
           <span><i class="fa fa-clock-o" aria-hidden="true"></i><%= time_ago_in_words post.created_at %></span>
-          <span><i class="fa fa fa-eye" aria-hidden="true"></i> 750 Views</span>
+          <span>
+            <i class="fa fa fa-eye" aria-hidden="true"></i>
+            <%= pluralize views_count(post.views), t(".view") %>
+          </span>
         </div>
       </div>
       <div class="col-md-3 col-sm-2 col-xs-12">
@@ -41,7 +44,7 @@
     </div>
   </div>
 <% else %>
-  <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+  <div class="col-xs-12 col-sm-12 col-md-4  col-lg-6">
     <div class="blog-grid">
       <div class="blog-image">
         <%= image_tag post.cover_image.url || "no_cover_image.png", class: "img-responsive cover-img" %>

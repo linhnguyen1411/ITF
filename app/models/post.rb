@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :replies, -> { where parent_id: nil }
   has_many :reactions, as: :reactionable, dependent: :destroy
+  has_many :views, dependent: :destroy
 
   mount_uploader :cover_image, ImageUploader
 
@@ -16,7 +17,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   scope :includes_full, -> do
-    merge(include_user).merge(include_tags).merge(include_replies).merge include_reactions
+    merge(include_user).merge(include_tags).merge(include_replies).merge(include_reactions).include_views
   end
   scope :order_by_votes_count, -> do
     joins("LEFT JOIN reactions ON reactions.reactionable_id = posts.id and reactions.reactionable_type = 'Post'
@@ -28,12 +29,18 @@ class Post < ApplicationRecord
       else 0 end) desc"
   end
 
+  scope :order_by_views_count, -> do
+    left_joins(:views).group("posts.id").order("sum(amount) desc, created_at desc").select("posts.*, sum(amount) as views_count")
+    .merge(include_user)
+  end
+
   private
 
   scope :include_user, -> {includes(:user)}
   scope :include_tags, -> {includes(:tags)}
   scope :include_reactions, -> {includes(:reactions)}
   scope :include_replies, -> {includes(:replies)}
+  scope :include_views, -> {includes(:views)}
   # scope :include_replies, -> do
   #   left_joins(:replies).group("posts.id").select("posts.*, count(replies.id) as replies_count")
   # end

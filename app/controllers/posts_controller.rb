@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :load_post, only: [:show, :post]
+  before_action :increase_views_count, only: :show
 
   def new
     @post = Post.new
@@ -9,6 +10,9 @@ class PostsController < ApplicationController
     @type = params[:type]
     if Post.types.include? @type
       @posts = Post.send(@type).includes_full.page(params[:page]).per Settings.paginate_default
+      @popular_posts = Post.send(@type).order_by_views_count.limit Settings.paginate_little
+      @popular_tags = Tag.order_by.posts_count.include_posts_count.limit Settings.paginate_default
+      @top_users = User.order_by_point.limit Settings.paginate_little
     else
       redirect_to root_path
     end
@@ -53,5 +57,11 @@ class PostsController < ApplicationController
     return if @post
     flash[:danger] = t "flash.load.not_found", resource: Post.name
     redirect_to root_path
+  end
+
+  def increase_views_count
+    @view = current_user.views.find_or_create_by(post_id: @post.id)
+    return if @view.updated_at > Settings.view_timeout.minutes.ago
+    @view.update_attributes amount: @view.amount + Settings.one
   end
 end
