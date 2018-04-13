@@ -1,4 +1,4 @@
 <% if @reactions.present? %>
-  $('#view_reaction_user_list').html('<%= j render "posts/reaction_modal", item: @item, reactions: @reactions %>');
+  $('#view_reaction_user_list').html('<%= j render "posts/reaction_modal", reactions: @reactions %>');
   $('#reaction_modal').modal();
 <% end %>

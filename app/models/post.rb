@@ -17,8 +17,6 @@ class Post < ApplicationRecord
 
   scope :includes_full, -> do
     merge(include_user).merge(include_tags).merge(include_replies_count).merge include_reactions
-
-
   end
 
   private

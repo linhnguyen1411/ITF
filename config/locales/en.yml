@@ -136,3 +136,13 @@ en:
     other: "other"
     you_and: "you and "
     and: " and "
+  static_pages:
+    index:
+      search_title: "Have a Question?"
+      introduce_search:  "If you have any question you can ask below or enter what you are looking for!"
+      how_it_work: "How  It Works "
+      introduce_use: "Login, Post Your Question and Find Your Solution"
+      create_account: "Create An Account"
+      create_post: "Post Your Question or Article"
+      find_or_study: "Study The New Technology"
+      hightest_votes_question: "Hightest Voted Questions"
