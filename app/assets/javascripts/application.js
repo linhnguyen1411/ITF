@@ -33,6 +33,7 @@
 //= require i18n/translations
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
+//= require jquery.remotipart
 
 CKEDITOR.config.customConfig = '/assets/ckeditor/small_ckeditor_config.js';
 $(document).ready(function(){

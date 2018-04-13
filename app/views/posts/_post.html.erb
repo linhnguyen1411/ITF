@@ -1,41 +1,76 @@
- <div class="listing-grid ">
-  <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs">
-      <%= link_to post.user, data: {placement: "bottom", toggle: "tooltip", original_title: post.user.name} do %>
-        <% image_tag post.user.avatar.url, class: "img-responsive center-block img-medium" %>
-      <% end %>
-      <!-- <span class="tick"><i class="fa fa-check" aria-hidden="true"></i></span> -->
-    </div>
-    <div class="col-md-7 col-sm-8  col-xs-12">
-      <h3><%= link_to post.title, post %></h3>
-      <div class="listing-meta">
-        <span><i class="fa fa-clock-o" aria-hidden="true"></i><%= time_ago_in_words post.created_at %></span>
-        <span><i class="fa fa fa-eye" aria-hidden="true"></i> 750 Views</span>
+<% if post.question? %>
+  <div class="listing-grid ">
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs">
+        <%= link_to post.user, data: {placement: "bottom", toggle: "tooltip", original_title: post.user.name} do %>
+          <% image_tag post.user.avatar.url, class: "img-responsive center-block img-medium" %>
+        <% end %>
+        <!-- <span class="tick"><i class="fa fa-check" aria-hidden="true"></i></span> -->
+      </div>
+      <div class="col-md-7 col-sm-8  col-xs-12">
+        <h3><%= link_to post.title, post %></h3>
+        <div class="listing-meta">
+          <span><i class="fa fa-clock-o" aria-hidden="true"></i><%= time_ago_in_words post.created_at %></span>
+          <span><i class="fa fa fa-eye" aria-hidden="true"></i> 750 Views</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-2 col-xs-12">
+        <ul class="question-statistic">
+          <li class="active">
+            <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".#{post.type}.replies" %>">
+              <span class="red-color"><i class="fa fa-reply" aria-hidden="true"></i><%= post.replies_count %></span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".votes" %>">
+              <span class="red-color"><i class="fa fa-sort" aria-hidden="true"></i><%= votes_count post.reactions %></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 col-sm-10  col-xs-12">
+        <div class="post-content margin-bottom-20 hidden-overflow">
+          <%= raw post.content %>
+        </div>
+        <div class="tagcloud pull-right">
+          <% post.tags.each do |tag| %>
+            <%= link_to tag.name, tag %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-2 col-xs-12">
-      <ul class="question-statistic">
-        <li class="active">
-          <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".#{post.type}.replies" %>">
-            <span class="red-color"><i class="fa fa-reply" aria-hidden="true"></i><%= post.replies_count %></span>
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tooltip" data-placement="bottom" data-original-title="<%= t ".votes" %>">
-            <span class="red-color"><i class="fa fa-sort" aria-hidden="true"></i><%= votes_count post.reactions %></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-10 col-sm-10  col-xs-12">
-      <div class="post-content margin-bottom-20 hidden-overflow">
-        <%= raw post.content %>
+  </div>
+<% else %>
+  <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+    <div class="blog-grid">
+      <div class="blog-image">
+        <%= image_tag post.cover_image.url || "no_cover_image.png", class: "img-responsive cover-img" %>
       </div>
-      <div class="tagcloud pull-right">
-        <% post.tags.each do |tag| %>
-          <%= link_to tag.name, tag %>
+      <div class="blog-content">
+        <h5>
+          <%= link_to post.title, post %>
+        <div class="listing-grid tag-list-in-article">
+          <div class="tagcloud pull-left">
+            <% post.tags.each do |tag| %>
+              <%= link_to tag.name, tag %>
+            <% end %>
+          </div>
+        </div>
+        <p class="active-content hidden-overflow"><%= post.content %></p>
+      </div>
+      <div class="blog-footer">
+        <ul class="like-comment">
+          <li>
+            <a class="red-color no-hover"><i class="fa fa-sort"></i><%= votes_count post.reactions %></a>
+          </li>
+          <li><a class="red-color no-hover"><i class="icon-chat"></i><%= post.replies_count %></a>
+          </li>
+        </ul>
+        <%= link_to post, class: "more-btn pull-right btn btn-primary"  do %>
+          <i class="fa fa-long-arrow-right"></i>
+          <%=  t ".more" %>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+<% end %>

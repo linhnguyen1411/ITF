@@ -9,6 +9,9 @@ post:
   max_title: 250
   min_title: 6
   min_content: 6
+  types:
+    question: "question"
+    article: "article"
 tag:
   limit_for_search: 5
   max_name: 50

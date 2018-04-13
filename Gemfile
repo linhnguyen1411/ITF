@@ -43,6 +43,8 @@ gem "i18n-js"
 gem "ransack"
 gem "sweetalert2"
 gem "kaminari"
+gem "remotipart"
+gem "mini_magick"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
