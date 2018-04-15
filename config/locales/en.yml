@@ -95,6 +95,8 @@ en:
       question:
         page_title: "All Question"
         breadcrumb: "Question Listing"
+    popular_tags: "Popular Tags"
+
     post:
       article:
         replies: "Comments"
@@ -126,7 +128,7 @@ en:
       post_reply: "Reply"
   flash:
     load:
-      not_found: "Not found"
+      not_found: "%{resource} not found"
   reactions:
     target_type:
       like: "Like"
@@ -146,3 +148,28 @@ en:
       create_post: "Post Your Question or Article"
       find_or_study: "Study The New Technology"
       hightest_votes_question: "Hightest Voted Questions"
+  tags:
+    show:
+      follower: "Follower"
+      post: "Post"
+      page_title: "Tag Information"
+      breadcrumb: "Tag Detial"
+      question: "Question"
+      article: "Article"
+      popular_tags: "Popular Tags"
+      all_tag: "All Tags"
+    post:
+      question:
+        replies: "Answers"
+      article:
+        replies: "Comments"
+      votes: "Votes"
+    index:
+      page_title: "Popular Tags"
+      breadcrumb: "Tag List"
+    tag:
+      follow: "Follow"
+      question: "Question"
+      article: "Article"
+      follower: "Follower"
+      post: "Post"

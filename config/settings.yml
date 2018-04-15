@@ -21,6 +21,7 @@ reply:
 zero: 0
 one: 1
 paginate_default: 10
+paginate_tags: 9
 reaction:
   like: "like"
   spam: "spam"
