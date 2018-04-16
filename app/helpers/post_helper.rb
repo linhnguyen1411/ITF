@@ -12,6 +12,10 @@ module PostHelper
   end
 
   def views_count views
-    views.pluck(:amount).inject(:+)
+    views.pluck(:amount).inject(:+) || Settings.zero
+  end
+
+  def views_count_of_series posts
+    posts.map{|post| views_count post.views}.inject(:+)
   end
 end

@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :series, optional: true
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
-  has_many :replies, -> { where parent_id: nil }
+  has_many :replies, -> { where parent_id: nil }, as: :replyable
   has_many :reactions, as: :reactionable, dependent: :destroy
   has_many :views, dependent: :destroy
 

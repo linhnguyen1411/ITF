@@ -66,12 +66,13 @@ ActiveRecord::Schema.define(version: 20180416015313) do
     t.datetime "deleted_at"
     t.boolean "correct_answer", default: false
     t.bigint "user_id"
-    t.bigint "post_id"
+    t.string "replyable_type"
+    t.bigint "replyable_id"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_replies_on_deleted_at"
-    t.index ["post_id"], name: "index_replies_on_post_id"
+    t.index ["replyable_type", "replyable_id"], name: "index_replies_on_replyable_type_and_replyable_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
@@ -132,7 +133,6 @@ ActiveRecord::Schema.define(version: 20180416015313) do
   add_foreign_key "posts", "series"
   add_foreign_key "posts", "users"
   add_foreign_key "reactions", "users"
-  add_foreign_key "replies", "posts"
   add_foreign_key "replies", "users"
   add_foreign_key "series", "users"
   add_foreign_key "views", "posts"

@@ -1,6 +1,6 @@
 class Reply < ApplicationRecord
   belongs_to :user
-  belongs_to :post, optional: true
+  belongs_to :replyable, optional: true, polymorphic: true
   belongs_to :parent_reply, class_name: Reply.name, foreign_key: :parent_id, optional: true
   has_many :children_replies, class_name: Reply.name, foreign_key: :parent_id,
     dependent: :destroy, inverse_of: :parent_reply
@@ -8,7 +8,9 @@ class Reply < ApplicationRecord
 
   validates :content, presence: true
 
-  scope :by_post, -> post_id {where post_id: post_id, parent_id: nil}
+  scope :by_replyable, -> replyable do
+    where replyable_id: replyable.id, replyable_type: replyable.class.name, parent_id: nil
+  end
   scope :includes_full, -> do
     merge(include_user).merge(include_children_replies).merge include_reactions
   end

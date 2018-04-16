@@ -239,7 +239,8 @@ namespace :db do
   task create_replies: :environment do
     Reply.create!(
       user_id: 2,
-      post_id: 1,
+      replyable_id: 1,
+      replyable_type: Post.name,
       content: "<p>Em thử add css n&agrave;y nh&eacute;&nbsp;<img alt=\"yes\" class=\"smiley\"
         height=\"23\" src=\"http://localhost:3000/assets/ckeditor/plugins/smiley/images/thumbs_up.png\"
         title=\"yes\" width=\"23\" /></p>\r\n\r\n<pre class=\"hljs brush:
@@ -255,7 +256,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 6,
-      post_id: 3,
+      replyable_id: 3,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến! Trong tất cả các hệ thống quản lý công việc, dự án (không chỉ riêng redmine),
       việc assign ticket hiện tại chỉ assign cho 1 member cụ thể nào đó trong project,
       còn việc sử dụng position để hệ thống tự động gán cho member thì hiện tại chưa có.
@@ -265,7 +267,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 7,
-      post_id: 3,
+      replyable_id: 4,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Hiện tại, IC team cũng đang lên kế hoạch để thay đổi format của chương trình Morning Speech,
       theo đó, phần bình chọn nhân viên có bài nói hay nhất trong tháng sẽ được thực hiện trên toàn chi nhánh,
@@ -275,7 +278,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 5,
-      post_id: 4,
+      replyable_id: 5,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Đây là một ý kiến rất hữu ích.
       BO đã chuẩn bị sẵn những tấm biển báo Nhà vệ sinh/Toilet hỏng để mọi người chủ động treo lên trước cửa phòng vệ sinhkhi cần cảnh báo cho những người sử dụng tiếp theo.
@@ -285,7 +289,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 6,
-      post_id: 5,
+      replyable_id: 5,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Công ty luôn chuẩn bị khăn lau mới cho các cô tạp vụ, tuy nhiên diện tích của công ty khá rộng nên có thể việc vệ sinh của các cô vẫn sẽ xẩy ra sơ suất,
       BO sẽ nhắc nhở thêm các cô về việc này. Nếu bạn thấy bàn vẫn tiếp tục bị bẩn vì bụi khăn, bạn vui lòng liên hệ trực tiếp với bộ phận Admin
@@ -294,7 +299,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 6,
-      post_id: 7,
+      replyable_id: 6,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Công ty khuyến khích các bạn tự mang cốc cá nhân của mình lên công ty sử dụng để tránh lãng phí đồng thời cũng bảo vệ môi trường.
       Cốc nhựa hiện tại chỉ sử dụng trong trường hợp bất khả kháng cần dùng ngay và dùng 1 lần.
@@ -303,7 +309,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 6,
-      post_id: 8,
+      replyable_id: 8,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Bộ phận BO cũng thường xuyên liên hệ để trao đổi với tòa nhà về các vấn đề nhà vệ sinh,
       tuy nhiên với tần số sử dụng đông như Công ty mình thì ý thức giữ gìn vệ sinh chung đóng vai trò rất quan trọng.
@@ -315,7 +322,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 7,
-      post_id: 4,
+      replyable_id: 4,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Đây cũng là vấn đề mà công ty đã nhắc nhở chung nhiều lần trên các phương tiện khác nhau nhưng vẫn có những trường hợp nói to gây ồn làm ảnh hưởng đến mọi người xung quanh.
       IC team sẽ cân nhắc thêm phương án để truyền thông tới mọi người lưu ý hơn về vấn đề ý thức nơi làm việc.
@@ -326,14 +334,16 @@ namespace :db do
 
     Reply.create!(
       user_id: 5,
-      post_id: 5,
+      replyable_id: 5,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Đối với các trường hợp như vậy, bạn vui lòng nhắc nhở trực tiếp bạn ấy hoặc báo lại cho BO chi nhánh Đà Nẵng để BO nhắc nhở bạn ấy rút kinh nghiệm khi sử dụng vật dụng chung trong Công ty."
     )
 
     Reply.create!(
       user_id: 5,
-      post_id: 6,
+      replyable_id: 6,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Các bộ phận phụ trách thường quote lại các thông báo để remind nhân viên vì sợ mọi người bị miss những thông tin.
       Các bộ phận sẽ xem xét tính quan trọng của các thông báo để thay đổi tần suất quote lại kèm với việc mention tất cả nhân viên cho phù hợp."
@@ -341,7 +351,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 5,
-      post_id: 7,
+      replyable_id: 7,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Trong cộng đồng các Công ty Công nghệ thông tin đặc biệt là các Công ty Nhật Bản,
       Cả 2 từ viết tắt BSE và BrSE đều thể hiện thuật ngữ Bridge System/Software Engineer (Kỹ sư cầu nối).
@@ -351,7 +362,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 5,
-      post_id: 8,
+      replyable_id: 8,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Hiện tại với mỗi đợt nhân viên mới PA đều gửi mail 'Welcome new member' tới toàn bộ nhân viên công ty trong đó ghi rất rõ bộ phận công tác,
       văn phòng làm việc của nhân viên mới, bạn có thể tham khảo thông tin trong mail này.
@@ -360,7 +372,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 5,
-      post_id: 9,
+      replyable_id: 9,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Hiện tại, Công ty chưa có kế hoạch lót thảm trải sàn tại văn phòng Đà Nẵng do một vài lý do khách quan.
       Trong tương lai, nếu có kế hoạch nâng cấp và thay đổi nội thất văn phòng Đà Nẵng, chúng tôi sẽ lưu ý đề xuất này của bạn."
@@ -368,7 +381,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 7,
-      post_id: 9,
+      replyable_id: 9,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến! Lịch phát Radio Confession không
       cố định ngày thứ 6 cuối cùng của tháng. Mỗi tháng có 1 dịp lễ đặc biệt,
       ban phát thanh dựa vào đó để lên chủ đề, biên tập nội dung và phát vào
@@ -379,7 +393,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 8,
-      post_id: 4,
+      replyable_id: 4,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Công ty mong muốn mọi người sắp xếp thời gian ăn sáng hợp lý để không bị ảnh hưởng đến công việc.
       Tuy nhiên nếu trong điều kiện khó khăn quá không thu xếp được thời gian ăn sáng trước giờ làm thì các bạn hoàn toàn có thể ăn sáng trong giờ với việc ý thức hơn và không gây ảnh hưởng đến mọi người xung quanh."
@@ -387,14 +402,16 @@ namespace :db do
 
     Reply.create!(
       user_id: 8,
-      post_id: 6,
+      replyable_id: 1,
+      replyable_type: Post.name,
       content: "Cảm ơn bạn đã đóng góp ý kiến!
       Mỗi chi nhánh đã có group mail riêng. Các bộ phận thường xuyên gửi thông báo sẽ lưu ý gửi đúng group mail của các chi nhánh."
     )
 
     Reply.create!(
       user_id: 3,
-      post_id: 4,
+      replyable_id: 1,
+      replyable_type: Post.name,
       content: "Manual test thì POSTMAN cũng tốt. Nhưng có cái tốt hơn POSTMAN 69 lần là INSOMNIA bạn nhé :)
       https://insomnia.rest/
 
@@ -405,7 +422,8 @@ namespace :db do
 
     Reply.create!(
       user_id: 3,
-      post_id: 5,
+      replyable_id: 5,
+      replyable_type: Post.name,
       content: "Bạn có thể đọc và tham khảo từ những bài viết này nhé:
       https://developers.google.com/web/fundamentals/design-and-ui/responsive"
     )

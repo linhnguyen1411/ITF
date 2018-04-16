@@ -76,40 +76,25 @@
           <%= link_to t(".article"), posts_path(type: :article), class: "#{"red-color" if params[:type] == "article"}" %>
         </li>
         <li class="hidden-sm">
-          <%= link_to t(".question"), posts_path(type: :question), class: "#{"red-color" if params[:type] == "question"}"%>
+          <%= link_to t(".question"), posts_path(type: :question), class: "#{"red-color" if params[:type] == "question"}" %>
         </li>
-        <li class="dropdown"> <a class="dropdown-toggle " data-hover="dropdown" data-toggle="dropdown" data-animations="fadeInUp">Pages <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="index.html">Home </a>
-            </li>
-            <li><a href="index2.html">Home 2</a>
-            </li>
-            <li><a href="question-detial.html">Question Detail</a>
-            </li>
-            <li><a href="blog.html">Blog</a>
-            </li>
-            <li><a href="blog-1.html">Blog RightSide Bar</a>
-            </li>
-            <li><a href="blog-2.html">Blog LeftSide Bar</a>
-            </li>
-            <li><a href="blog-detial.html">Blog Single</a>
-            </li>
-            <li><a href="404.html">Error Page</a>
-            </li>
-            <li><a href="contact.html">Contact Us</a>
-            </li>
-            <li><a href="contact-2.html">Contact With Map</a>
-            </li>
-          </ul>
+        <li class="hidden-sm">
+          <%= link_to t(".series"), series_index_path, class: "#{"red-color" if @type == Series.name }" %>
         </li>
-        <li>
-          <div class="btn-nav">
-            <%= link_to t(".create_post"), new_post_path, class: "btn btn-primary btn-small navbar-btn" %>
-          </div>
-        </li>
+        <% if @type == Series.name %>
+          <li>
+            <div class="btn-nav">
+              <%= link_to t(".create_series"), new_series_path, class: "btn btn-primary btn-small navbar-btn" %>
+            </div>
+          </li>
+        <% else %>
+          <li>
+            <div class="btn-nav">
+              <%= link_to t(".create_post"), new_post_path, class: "btn btn-primary btn-small navbar-btn" %>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
-    <!-- navigation menu end -->
-    <!--/.navbar-collapse -->
   </div>
 </div>

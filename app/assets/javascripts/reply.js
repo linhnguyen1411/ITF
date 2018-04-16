@@ -1,18 +1,20 @@
 $(document).ready(function(){
   $(document).on('click', '.show-reply-form', function(){
-    var post_id = $(this).data('post-id');
-    var post_type = $(this).data('post-type');
+    var replyable_id = $(this).data('replyable-id');
+    var replyable_type = $(this).data('replyable-type');
+    var type = $(this).data('type');
     var parent_id = $(this).data('parent-id');
     $.ajax({
-      url: '/replies/new?post_id=' + post_id + '&post_type=' + post_type + '&parent_id=' + parent_id,
+      url: '/replies/new?replyable_id=' + replyable_id + '&replyable_type='
+        + replyable_type + '&type=' + type + '&parent_id=' + parent_id,
       type: 'GET',
       dataType: 'script'
     });
     $(this).removeClass('show-reply-form');
     $(this).addClass('hide-reply-form');
-    if(post_type){
+    if(type){
       $(this).html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
-        + I18n.t('posts.show.' + post_type + '.cancel_reply'));
+        + I18n.t('posts.show.' + type + '.cancel_reply'));
     }else{
       $(this).html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
         + I18n.t('posts.show.cancel_reply'));
@@ -20,12 +22,12 @@ $(document).ready(function(){
   });
 
   $(document).on('click', '.hide-reply-form', function(){
-    var post_type = $(this).data('post-type');
+    var type = $(this).data('type');
     var parent_id = $(this).data('parent-id');
     $('#reply_form_' + parent_id).slideUp(500).hide(500);
-    if(post_type){
+    if(type){
       $(this).html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i> '
-        + I18n.t('posts.show.' + post_type + '.post_reply'));
+        + I18n.t('posts.show.' + type + '.post_reply'));
     }else{
       $(this).html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
         + I18n.t('posts.show.post_reply'));
