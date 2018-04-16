@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   def load_post
     @post = Post.find_by id: params[:id]
     return if @post
-    flash[:danger] = t "flash.load.not_found"
+    flash[:danger] = t "flash.load.not_found", resource: Post.name
     redirect_to root_path
   end
 end

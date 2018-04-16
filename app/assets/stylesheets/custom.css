@@ -208,3 +208,69 @@
   padding-right: 20px;
   float: left;
 }
+.tag-list .tag-item .tag-image {
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+.tag-list .tag-item .panel-left {
+  display: inline-block;
+  float: left;
+}
+
+.tag-list .tag-item .panel-right {
+  display: inline-block;
+  padding-top: 10px;
+}
+.tag-list .tag-item{
+  width: 100%;
+  display: inline-block;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.29);
+}
+.list-tab > li.active > a {
+  color: #be161e !important;
+}
+.list-tab > li a {
+  color: #000;
+  margin-right: 0px !important;
+}
+.list-tab > li > a:hover {
+  color: #be161e !important;
+}
+.list-tab > li.active {
+  border-top: #be161e solid 3px !important;
+  border-radius: 4px;
+}
+.list-tab > li {
+  border-top: #fff solid 3px !important;
+  border-radius: 4px;
+}
+.margin-right-0 {
+  margin-right: 0px !important;
+}
+.bold-font {
+  font-weight: bold !important;
+}
+.post-content {
+  color: black;
+}
+.posts-count {
+  color: white;
+  background: #be161e;
+  padding: 14px 13px !important;
+  font-weight: bold;
+  font-size: 13.5px;
+}
+
+.side-bar .widget .tag_cloud a {
+  padding: 0 0 0 17px !important;
+}
+.all_tags {
+  margin-right: 15px;
+}
+.padding-top-bottom-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

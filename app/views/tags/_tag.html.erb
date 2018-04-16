@@ -1,0 +1,25 @@
+<div class="col-md-4 col-sm-12 col-xs-12 padding-top-bottom-15">
+  <div class="tag-item">
+    <div class="panel-left">
+      <%= image_tag "no_tag_image.png", class: "tag-image img-border" %>
+    </div>
+    <div class="panel-right">
+      <div class="tag-name">
+        <%= link_to tag.name, tag %>
+      </div>
+      <div class="tag-follower">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        : <%= pluralize 1, t(".follower") %>
+      </div>
+      <div class="tag-post">
+        <i class="fa fa-file-text-o bold-font" aria-hidden="true"></i>
+        : <%= pluralize tag.posts_count, t(".post") %>
+      </div>
+      <div class="tag-function">
+        <%= link_to "#", class: "btn btn-success btn-xs", disabled: true do %>
+          <%= t ".follow" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="main-content-area">
+  <section class="page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-7 co-xs-12 text-left">
+          <h1><%= t ".page_title" %></h1>
+        </div>
+        <div class="col-md-6 col-sm-5 co-xs-12 text-right">
+          <div class="bread">
+            <ol class="breadcrumb">
+              <li><%= link_to t("page_title.home"), root_path %></a></li>
+              <li class="active"><%= t ".breadcrumb" %></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding-80 white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 col-xs-12">
+          <div class="tag-list">
+            <div class="tag-item">
+              <div class="panel-left">
+                <%= image_tag "no_tag_image.png", class: "tag-image img-border" %>
+              </div>
+              <div class="panel-right">
+                <div class="tag-name">
+                  <%= link_to @tag.name, @tag %>
+                </div>
+                <div class="tag-follower">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+                  : <%= pluralize 1, t(".follower") %>
+                </div>
+                <div class="tag-question">
+                  <i class="fa fa-question-circle-o bold-font" aria-hidden="true"></i>
+                  : <%= pluralize posts_count(@posts, Settings.post.types.question), t(".question") %>
+                </div>
+                <div class="tag-article">
+                  <i class="fa fa-file-text-o bold-font" aria-hidden="true"></i>
+                  : <%= pluralize posts_count(@posts, Settings.post.types.article), t(".article") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white padding-bottom-30">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+          <div class="listing">
+            <div class="listing-area post-tab">
+              <ul class="nav nav-tabs list-tab">
+                <li class="active">
+                  <a data-toggle="tab" href="#question"><%= t ".question" %></a>
+                </li>
+                <li>
+                  <a data-toggle="tab" href="#article"><%= t ".article" %></a>
+                </li>
+              </ul>
+              <div class="tab-content post-tab-content">
+                <div id="question" class="tab-pane active">
+                  <%= render partial: "post", collection: group_posts(@posts)["question"], as: :post %>
+                </div>
+                <div id="article" class="tab-pane">
+                  <%= render partial: "post", collection: group_posts(@posts)["article"], as: :post %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 clearfix">
+          <div class="side-bar">
+            <div class="widget">
+              <div class="widget_tag_cloud">
+                <h2>Tags cloud</h2>
+                <hr class="widget-separator no-margin">
+                <div class="tag_cloud">
+                  <% @popular_tags.each do |tag| %>
+                    <%= link_to tag do %>
+                      <%= tag.name %>
+                      <span class="posts-count"><%= tag.posts_count %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="all_tags pull-right">
+                  <%= link_to tags_path do %>
+                    <span class="glyphicon glyphicon-tags"></span>
+                    <%= t ".all_tag" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

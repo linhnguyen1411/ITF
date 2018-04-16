@@ -28,7 +28,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-10 col-sm-10  col-xs-12">
+      <div class="col-md-offset-2 col-md-10 col-sm-10  col-xs-12">
       <div class="post-content margin-bottom-20 hidden-overflow">
           <%= raw post.content %>
         </div>
@@ -63,7 +63,7 @@
           <li>
             <a class="red-color no-hover"><i class="fa fa-sort"></i><%= votes_count post.reactions %></a>
           </li>
-          <li><a class="red-color no-hover"><i class="icon-chat"></i><%= post.replies_count %></a>
+          <li><a class="red-color no-hover"><i class="icon-chat"></i><%= post.replies.length %></a>
           </li>
         </ul>
         <%= link_to post, class: "more-btn pull-right btn btn-primary"  do %>

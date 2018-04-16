@@ -1,0 +1,31 @@
+<div class="main-content-area">
+  <section class="page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-7 co-xs-12 text-left">
+          <h1><%= t ".page_title" %></h1>
+        </div>
+        <div class="col-md-6 col-sm-5 co-xs-12 text-right">
+          <div class="bread">
+            <ol class="breadcrumb">
+              <li><%= link_to t("page_title.home"), root_path %></a></li>
+              <li class="active"><%= t ".breadcrumb" %></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding-80 white">
+    <div class="container">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="tag-list">
+          <%= render partial: "tag", collection: @tags, as: :tag %>
+        </div>
+        <div class="text-center clearfix">
+          <%= paginate @tags %>
+        </div>
+      </div>
+    </div>
+  </section>

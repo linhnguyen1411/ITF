@@ -28,7 +28,7 @@ class RepliesController < ApplicationController
   def load_post
     @post = Post.find_by id: params[:reply][:post_id]
     return if @post.present?
-    flash[:danger] = t ".post_not_exist"
+    flash[:danger] = t "flash.load.not_found", resource: Post.name
     redirect_to root_path
   end
 end
