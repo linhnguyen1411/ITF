@@ -33,7 +33,10 @@
                       <i class="fa fa-clock-o" aria-hidden="true"></i>
                       <%= time_ago_in_words @post.created_at %>
                     </span>
-                    <span><i class="fa fa fa-eye" aria-hidden="true"></i> 750 Views</span>
+                    <span>
+                      <i class="fa fa fa-eye" aria-hidden="true"></i>
+                      <%= pluralize views_count(@post.views), t(".view") %>
+                    </span>
                   </div>
                 </div>
                 <div class="col-md-11 col-sm-11 col-xs-10">

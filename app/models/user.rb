@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :replies
   has_many :series
   has_many :reactions
+  has_many :views, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
@@ -11,4 +12,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: Settings.user.max_name,
     minimum: Settings.user.min_name}
+
+  scope :order_by_point, -> {order point: :desc}
+
 end

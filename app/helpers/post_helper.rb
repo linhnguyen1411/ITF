@@ -10,4 +10,8 @@ module PostHelper
   def group_posts posts
     posts.group_by{|post| post.type}
   end
+
+  def views_count views
+    views.pluck(:amount).inject(:+)
+  end
 end

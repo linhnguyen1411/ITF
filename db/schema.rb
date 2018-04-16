@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412231501) do
+ActiveRecord::Schema.define(version: 20180416015313) do
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "data_file_name", null: false
@@ -111,9 +111,20 @@ ActiveRecord::Schema.define(version: 20180412231501) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point", default: 0
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "views", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "amount", default: 1
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_views_on_post_id"
+    t.index ["user_id"], name: "index_views_on_user_id"
   end
 
   add_foreign_key "post_tags", "posts"
@@ -124,4 +135,6 @@ ActiveRecord::Schema.define(version: 20180412231501) do
   add_foreign_key "replies", "posts"
   add_foreign_key "replies", "users"
   add_foreign_key "series", "users"
+  add_foreign_key "views", "posts"
+  add_foreign_key "views", "users"
 end

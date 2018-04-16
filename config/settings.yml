@@ -22,8 +22,14 @@ zero: 0
 one: 1
 paginate_default: 10
 paginate_tags: 9
+paginate_little: 5
+paginate_index: 3
 reaction:
   like: "like"
   spam: "spam"
   upvote: "upvote"
   downvote: "downvote"
+view_timeout: 15
+point:
+  ten: 10
+  twenty: 20
