@@ -1,0 +1,29 @@
+<div class="media-group">
+  <h2 class="post-box-title">
+    [<%= link_to series.user.name, series.user, class: "series-user" %>]
+    <%= link_to series.title.truncate(Settings.series.max_title, separator: ' '),
+      series, class: "series-title" %>
+  </h2>
+  <div class="media-group-item padding-left-10">
+    <div class="media">
+      <div class="media-left">
+        <div class="cover-image-series">
+          <%= image_tag series.cover_image.url || "image_series.jpg", class: "img-responsive middle-img" %>
+        </div>
+      </div>
+      <div class="media-body">
+        <div class="post-content margin-bottom-10 hidden-overflow">
+          <%= raw series.content %>
+        </div>
+        <div>
+          <span class="badge info-item" data-toggle="tooltip" title="<%= t ".votes" %>">
+            <span class="fa fa-sort"> <%= votes_count series.reactions %></span>
+          </span>
+          <span class="badge info-item" data-toggle="tooltip" title="<%= t ".comments" %>">
+            <span class="fa fa-comments-o"> <%= series.replies.length %></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

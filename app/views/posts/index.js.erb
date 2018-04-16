@@ -1,4 +1,13 @@
 <% if @posts.present? %>
-  $('#view_post_list').html('<%= j render "series/post_list_modal", posts: @posts %>');
-  $('#post_list_modal').modal();
+  $('#post_list_modal').html('<%= j render "series/post_list_modal", posts: @posts %>');
+  if(!$('#post_list_modal').hasClass('in'))
+    $('#post_list_modal').modal('hide').modal('show');
+  var post_list = $('.post-item');
+  var post_ids = $('#post_list_modal').data('post-ids');
+  $.each(post_list, function(i) {
+    id = parseInt(post_list[i].id);
+    if (post_ids.includes(id)) {
+      $(post_list[i]).addClass('selected');
+    }
+  });
 <% end %>

@@ -1,1 +1,65 @@
-index.html.erb
+<div class="main-content-area">
+  <section class="page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-7 co-xs-12 text-left">
+          <h1><%= t ".page_title" %></h1>
+        </div>
+        <div class="col-md-6 col-sm-5 co-xs-12 text-right">
+          <div class="bread">
+            <ol class="breadcrumb">
+              <li><%= link_to t("page_title.home"), root_path %></a></li>
+              <li class="active"><%= t ".breadcrumb" %></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-padding-80 white series" id="questions">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-8">
+          <%= render partial: "series", collection: @series %>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-4">
+          <div class="side-bar">
+            <div class="widget">
+              <div class="widget_tag_cloud">
+                <h2><%= t ".popular_tags" %></h2>
+                <hr class="widget-separator no-margin">
+                <div class="tag_cloud">
+                  <% @popular_tags.each do |tag| %>
+                    <%= link_to tag do %>
+                      <%= tag.name %>
+                      <span class="posts-count"><%= tag.posts_count %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="all_tags pull-right">
+                  <%= link_to tags_path do %>
+                    <span class="glyphicon glyphicon-tags"></span>
+                    <%= t ".all_tag" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="widget">
+              <h2><%= t ".top_users" %></h2>
+              <hr class="widget-separator no-margin">
+              <div class="media-group">
+                <%= render partial: "posts/user", collection: @top_users, as: :user %>
+              </div>
+              <div class="margin-right-15 pull-right">
+                <%= link_to users_path do %>
+                  <i class="fa fa-users"></i>
+                  <%= t ".all_users" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
