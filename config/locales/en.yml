@@ -1,6 +1,7 @@
 en:
   hello: "Hello world"
   close: "Close"
+  ok: "Ok"
   layouts:
     header:
       home: "Home"
@@ -11,6 +12,8 @@ en:
       create_post: "Create Post"
       article: "Articles"
       question: "Questions"
+      series: "Series"
+      create_series: "Create Series"
   page_title:
     home: "Home"
 
@@ -131,6 +134,10 @@ en:
       question:
         flash_success: "Create a successful answer"
         flash_danger: "Create a failed answer"
+      reply:
+        flash_danger: "Create a failed reply"
+      flash_danger: "Create a failed reply"
+      flash_success: "Create a successful reply"
     reply:
       correct_answer: "Correct Answer"
       reply: "Reply"
@@ -192,3 +199,23 @@ en:
       article: "Article"
       follower: "Follower"
       post: "Post"
+  series:
+    new:
+      page_title: "Create Your Series"
+      breadcrumb: "Create Series"
+      placeholder:
+        content: "Add Your Content Here....."
+        title: "Your Series Title"
+      content: "Content"
+      submit: "Create Series"
+      browse: "Browse…"
+    show:
+      page_title: "Post Series "
+      breadcrumb: "Series Detial"
+      post_reply: "Post comment"
+      cancel_reply: "Cancel comment"
+      thread_reply: "Thread comment"
+      view: "view"
+      add_posts: "Add Posts"
+    post_list_modal:
+      add_posts: "Add Posts"

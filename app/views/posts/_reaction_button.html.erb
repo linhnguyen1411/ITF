@@ -22,7 +22,7 @@
     <% end %>
   </div>
 <% else %>
-  <div class="row text-center" id="reaction_of_post_<%= reactionable.id %>">
+  <div class="row text-center" id="reaction_of_<%= reactionable.class.name.downcase %>_<%= reactionable.id %>">
     <div class="btn-action">
       <%= link_to "javascript:", class: "btn-vote btn-reaction
         #{"reacted" if current_user_reacted? reactions, Settings.reaction.upvote}",

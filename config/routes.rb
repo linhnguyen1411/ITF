@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :replies
   resources :users
   resources :reactions
+  resources :series
   root 'static_pages#index'
   get 'static_pages/question_detail'
   get 'static_pages/question_list'

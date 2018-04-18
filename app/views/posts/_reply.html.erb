@@ -26,8 +26,9 @@
 
     <div class="row">
       <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-30">
-        <%= link_to "javascript:void(0)", data: {post_id: reply.post_id, post_type: "",
-          parent_id: reply.id}, class: "show-reply-form btn btn-primary btn-small" do %>
+        <%= link_to "javascript:void(0)", data: {replyable_id: "", replyable_type: "",
+          type: "", parent_id: reply.id},
+          class: "show-reply-form btn btn-primary btn-small" do %>
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           <%= t ".reply" %>
         <% end %>
@@ -42,7 +43,7 @@
       <% if reply.children_replies.present? %>
         <div class="border-bottom-1 margin-bottom-30"></div>
         <div class="thread-children-reply">
-          <%= render partial: "children_reply", as: :reply, collection: reply.children_replies %>
+          <%= render partial: "posts/children_reply", as: :reply, collection: reply.children_replies %>
           <% if view_more_replies? reply.children_replies.length %>
           <div class="view-more">
             <%= link_to link_to_view_more_replies(reply.children_replies.length),

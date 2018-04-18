@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: [:show, :post]
+  before_action :load_post, only: [:show]
   before_action :increase_views_count, only: :show
 
   def new
@@ -13,13 +13,20 @@ class PostsController < ApplicationController
       @popular_posts = Post.send(@type).order_by_views_count.limit Settings.paginate_little
       @popular_tags = Tag.order_by.posts_count.include_posts_count.limit Settings.paginate_default
       @top_users = User.order_by_point.limit Settings.paginate_little
+      respond_to do |format|
+        format.js
+        format.html
+      end
     else
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+        format.html {redirect_to root_path}
+      end
     end
   end
 
   def show
-    @replies = Reply.by_post(@post).includes_full
+    @replies = Reply.by_replyable(@post).includes_full
     @votes = @post.reactions.include_user
   end
 

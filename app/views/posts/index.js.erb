@@ -1,0 +1,4 @@
+<% if @posts.present? %>
+  $('#view_post_list').html('<%= j render "series/post_list_modal", posts: @posts %>');
+  $('#post_list_modal').modal();
+<% end %>

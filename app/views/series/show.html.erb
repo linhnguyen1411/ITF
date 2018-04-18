@@ -3,13 +3,13 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-7 co-xs-12 text-left">
-            <h1><%= t ".#{@post.type}.page_title" %></h1>
+            <h1><%= t ".page_title" %></h1>
           </div>
           <div class="col-md-6 col-sm-5 co-xs-12 text-right">
             <div class="bread">
               <ol class="breadcrumb">
                 <li><%= link_to t("page_title.home"), root_path %></a></li>
-                <li class="active"><%= t ".#{@post.type}.breadcrumb" %></li>
+                <li class="active"><%= t ".breadcrumb" %></li>
               </ol>
             </div>
           </div>
@@ -24,40 +24,49 @@
             <div class="listing-grid ">
               <div class="row">
                 <div class="col-md-1 col-sm-1 col-xs-2 vote-post">
-                  <%= render "posts/reaction_button", reactions: @votes, reactionable: @post %>
+                  <%= render "posts/reaction_button", reactions: @votes, reactionable: @series %>
                 </div>
                 <div class="col-md-11 col-sm-11 col-xs-10">
-                  <h3><%= @post.title %></h3>
+                  <h3><%= @series.title %></h3>
                   <div class="listing-meta">
                     <span>
                       <i class="fa fa-clock-o" aria-hidden="true"></i>
-                      <%= time_ago_in_words @post.created_at %>
+                      <%= time_ago_in_words @series.created_at %>
                     </span>
                     <span>
                       <i class="fa fa fa-eye" aria-hidden="true"></i>
-                      <%= pluralize views_count(@post.views), t(".view") %>
+                      <%= pluralize views_count_of_series(@posts), t(".view") %>
                     </span>
                   </div>
                 </div>
                 <div class="col-md-11 col-sm-11 col-xs-10">
                   <div class="post-content margin-bottom-20">
-                    <%= raw @post.content %>
+                    <%= raw @series.content %>
                   </div>
                   <div class="row">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-30">
-                      <%= link_to "javascript:void(0)", data: {replyable_id: @post.id,
-                        replyable_type: @post.class.name, type: @post.type, parent_id: ""},
-                        class: "show-reply-form btn btn-primary btn-small" do %>
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        <%= t ".#{@post.type}.post_reply" %>
-                      <% end %>
-                    </div>
-                    <div class="col-md-9 col-sm-8 col-xs-12 margin-bottom-30">
+                    <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
                       <div class="tagcloud pull-right">
-                        <% @post.tags.each do |tag| %>
-                          <%= link_to tag.name, tag %>
+                        <% @posts.each do |post| %>
+                          <% post.tags.each do |tag| %>
+                            <%= link_to tag.name, tag %>
+                          <% end %>
                         <% end %>
                       </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-30">
+                      <%= link_to "javascript:void(0)", data: {replyable_id: @series.id,
+                        replyable_type: @series.class.name, type: :article, parent_id: ""},
+                        class: "show-reply-form btn btn-primary btn-small" do %>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <%= t ".post_reply" %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-30">
+                      <%= link_to posts_path(type: :article), remote: true,
+                        class: "btn btn-primary btn-small pull-right" do %>
+                        <i class="fa fa-plus-circle " aria-hidden="true"></i>
+                        <%= t ".add_posts" %>
+                      <% end %>
                     </div>
                   </div>
                   <div id="reply_form_"></div>
@@ -66,8 +75,8 @@
             </div>
             <div class="clearfix"></div>
             <div class="thread-reply">
-              <h2><%= t ".#{@post.type}.thread_reply" %></h2>
-              <%= render partial: "reply", collection: order_replies(@replies) %>
+              <h2><%= t ".thread_reply" %></h2>
+              <%= render partial: "posts/reply", collection: order_replies(@replies) %>
             </div>
           </div>
 
@@ -77,8 +86,8 @@
                 <div class="widget-image widget-image-sm">
                   <%= image_tag "light-background.jpg" %>
                   <div class="widget-image-content text-center">
-                    <%= image_tag @post.user.avatar.url, class: "img-thumbnail" %>
-                    <h2 class="widget-heading text-light"><strong><%= @post.user.name %></strong></h2>
+                    <%= image_tag @series.user.avatar.url, class: "img-thumbnail" %>
+                    <h2 class="widget-heading text-light"><strong><%= @series.user.name %></strong></h2>
                     <h4 class="widget-heading text-light-op"><em>Graphic Designer</em></h4>
                   </div>
                 </div>
@@ -149,3 +158,4 @@
     </section>
   </div>
   <div id="view_reaction_user_list"></div>
+  <div id="view_post_list"></div>

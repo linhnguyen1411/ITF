@@ -12,6 +12,9 @@ post:
   types:
     question: "question"
     article: "article"
+series:
+  max_title: 250
+  min_title: 6
 tag:
   limit_for_search: 5
   max_name: 50
