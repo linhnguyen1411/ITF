@@ -219,3 +219,18 @@ en:
       add_posts: "Add Posts"
     post_list_modal:
       add_posts: "Add Posts"
+  users:
+    index:
+      top_users:
+        page_title: "Top Users List"
+        breadcrumb: "Top Users List"
+    user:
+      points: "Points"
+      posts: "Posts"
+      replies: "Replies"
+      following: "Following"
+      follow: "Follow"
+      unfollow: "Unfollow"
+  follows:
+    create:
+      follow: "follow"
