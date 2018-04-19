@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def index
     @type = params[:type]
     if Post.types.include? @type
-      @posts = Post.send(@type).includes_full.page(params[:page]).per Settings.paginate_default
+      @posts = Post.send(@type).includes_full.page(params[:page]).per Settings.paginate_post
       @popular_posts = Post.send(@type).order_by_views_count.limit Settings.paginate_little
       @popular_tags = Tag.order_by.posts_count.include_posts_count.limit Settings.paginate_default
       @top_users = User.order_by_point.limit Settings.paginate_little
@@ -17,6 +17,9 @@ class PostsController < ApplicationController
         format.js
         format.html
       end
+    elsif @type = Series.name.downcase
+      @posts = current_user.posts.article.not_belong_to_series(params[:series_id]).includes_full
+        .page(params[:page]).per Settings.paginate_default
     else
       respond_to do |format|
         format.js

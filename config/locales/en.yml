@@ -219,6 +219,21 @@ en:
       add_posts: "Add Posts"
     post_list_modal:
       add_posts: "Add Posts"
+    create:
+      flash_success: "Create a successful series"
+    update:
+      flash_success:
+        add_posts: "Add the successful posts"
+      flash_danger:
+        add_posts: "Add the failed posts"
+    series:
+      votes: "Votes"
+      comments: "Comments"
+    index:
+      top_users: "Top Users"
+      popular_tags: "Popular Tags"
+      page_title: "Series List"
+      breadcrumb: "Series List"
   users:
     index:
       top_users:
@@ -234,3 +249,6 @@ en:
   follows:
     create:
       follow: "follow"
+      aritcle_list: "Article List"
+    post_list_modal:
+      add_posts: "Add Posts"

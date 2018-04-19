@@ -2,7 +2,8 @@ class Series < ApplicationRecord
   has_many :posts, -> { where type: :article }, dependent: :destroy, inverse_of: :series
   belongs_to :user
   has_many :reactions, as: :reactionable, dependent: :destroy
-
+  mount_uploader :cover_image, ImageUploader
+  has_many :replies, -> { where parent_id: nil }, as: :replyable, dependent: :destroy
   scope :includes_full, -> do
     merge(include_posts).merge(include_views_count)
   end

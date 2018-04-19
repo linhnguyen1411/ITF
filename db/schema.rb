@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418131945) do
+ActiveRecord::Schema.define(version: 20180419093752) do
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "data_file_name", null: false
@@ -89,11 +89,12 @@ ActiveRecord::Schema.define(version: 20180418131945) do
 
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
-    t.string "content"
+    t.text "content"
     t.datetime "deleted_at"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover_image"
     t.index ["deleted_at"], name: "index_series_on_deleted_at"
     t.index ["user_id"], name: "index_series_on_user_id"
   end

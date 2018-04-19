@@ -44,15 +44,24 @@
                     <%= raw @series.content %>
                   </div>
                   <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
-                      <div class="tagcloud pull-right">
-                        <% @posts.each do |post| %>
-                          <% post.tags.each do |tag| %>
+                    <%if @posts.present? %>
+                      <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+                        <div class="post-list-custom-modal post-list">
+                            <div class="section-title-line">
+                              <h1 class="text-bold"><%= t ".aritcle_list" %></h1>
+                              <hr class="filler-line mb-05">
+                            </div>
+                          <%= render partial: "series/post", collection: @posts, locals:{type: :show} %>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+                        <div class="tagcloud pull-right">
+                          <% get_tag_list(@posts).each do |tag| %>
                             <%= link_to tag.name, tag %>
                           <% end %>
-                        <% end %>
+                        </div>
                       </div>
-                    </div>
+                    <% end %>
                     <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-30">
                       <%= link_to "javascript:void(0)", data: {replyable_id: @series.id,
                         replyable_type: @series.class.name, type: :article, parent_id: ""},
@@ -62,7 +71,7 @@
                       <% end %>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-30">
-                      <%= link_to posts_path(type: :article), remote: true,
+                      <%= link_to posts_path(type: :series, series_id: @series.id), remote: true,
                         class: "btn btn-primary btn-small pull-right" do %>
                         <i class="fa fa-plus-circle " aria-hidden="true"></i>
                         <%= t ".add_posts" %>
@@ -158,4 +167,5 @@
     </section>
   </div>
   <div id="view_reaction_user_list"></div>
-  <div id="view_post_list"></div>
+  <div class="modal fade" id="post_list_modal" data-post-ids='<%= @selected_post_id_list %>'
+    data-current='<%= @selected_post_id_list %>'></div>

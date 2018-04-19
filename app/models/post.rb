@@ -34,6 +34,7 @@ class Post < ApplicationRecord
     .merge(include_user)
   end
 
+  scope :not_belong_to_series, -> series_id {where series_id: [nil, series_id]}
   private
 
   scope :include_user, -> {includes(:user)}

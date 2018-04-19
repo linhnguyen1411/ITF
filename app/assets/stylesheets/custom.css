@@ -325,11 +325,15 @@
 .latest-news .media-group:last-child {
   border-bottom: none;
 }
-.post-list-custom-modal .popular-img{
+.post-list-custom-modal .popular-img {
   display: inline-block;
   position: relative;
 }
-.post-list-custom-modal .like-comment li {
+.post-list-custom-modal .popular-img img {
+  height: auto;
+  width: auto;
+}
+.post-list-custom-modal .like-comment li, .series .like-comment li {
   float: left;
 }
 .post-list-custom-modal .media-heading a {
@@ -338,11 +342,11 @@
 .post-list-custom-modal .like-comment {
   padding-left: 15px;
 }
-.post-list-custom-modal .like-comment li a {
+.post-list-custom-modal .like-comment li span, .series .like-comment li span {
   width: auto;
   padding: 0px 10px 0px 0px;
 }
-.post-list-custom-modal .news-post .media-group {
+.post-list-custom-modal .media-group {
   border: 1px solid #3333;
   padding: 7px 7px 0px 7px;
   margin-bottom: 10px;
@@ -363,15 +367,11 @@
   color: red;
   background: #fff;
 }
-
-
-
 .user-item .avatar {
   width: 150px;
   height: 150px;
   border-radius: 15px;
 }
-
 .user-item {
   padding: 30px 10px !important;
   border-radius: 5px;
@@ -414,4 +414,52 @@
 }
 .user-item .btn, .tag-list .btn{
   border-radius: 5px;
+}
+.post-list-custom-modal .media-group.selected {
+  background: #96c4fb;
+}
+.post-list-custom-modal .media-group.selected .add-post {
+  color: red;
+  background: #fff;
+}
+.section-title-line {
+  display: flex;
+}
+.section-title-line .text-bold{
+  line-height:  1.1;
+}
+.section-title-line>.filler-line {
+  margin-left: 1em;
+  flex-grow: 1;
+  border-color: #d6d6d7;
+  margin-top: 30px;
+}
+.post-list-custom-modal.post-list .media-group {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.question-details .post-list-custom-modal.post-list .media-body {
+  padding-left: 0px;
+}
+.cover-image-series {
+  height: 130px;
+  width: 250px;
+  position: relative;
+  border: solid 1px;
+}
+.series .media-left {
+  padding-right: 15px !important;
+}
+.series .series-title {
+  color: #0085ff;
+}
+.series .series-user {
+  color: #be161e;
+}
+.series .post-box-title {
+  padding-bottom: 5px;
+}
+.series .media-group {
+  margin-bottom: 50px;
 }

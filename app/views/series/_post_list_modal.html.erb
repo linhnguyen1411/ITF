@@ -1,50 +1,23 @@
-<div class="modal fade" id="post_list_modal">
-  <div class="modal-dialog">
-    <div class="modal-content post-list-custom-modal">
-      <div class="modal-header">
-        <h4 class="modal-title"><%= t ".add_posts" %></h4>
+<div class="modal-dialog">
+  <div class="modal-content post-list-custom-modal">
+    <div class="modal-header">
+      <h4 class="modal-title"><%= t ".add_posts" %></h4>
+    </div>
+    <div class="modal-body">
+      <div class="news-post">
+        <%= render partial: "series/post", collection: posts, locals:{type: :update} %>
       </div>
-      <div class="modal-body">
-        <div class="news-post">
-          <% posts.each do |post| %>
-            <div class="media-group">
-              <div class="media-group-item padding-left-10">
-                <div class="media">
-                  <div class="media-left">
-                    <div class="avatar popular-img avatar-md avatar-circle img-border-2">
-                      <%= image_tag post.cover_image.url || "no_cover_image.png",class: "img-responsive middle-img" %>
-                    </div>
-                  </div>
-                  <div class="media-body">
-                    <div class="col-md-11 col-sm-11 co-xs-11">
-                      <h5 class="media-heading"><%= link_to post.title, post %></h5>
-                    </div>
-                    <div class="col-md-1 col-sm-1 co-xs-1 ">
-                      <i class="fa fa-link cycle-border add-post" data-id="<%= post.id %>"></i>
-                    </div>
-                    <ul class="like-comment">
-                      <li>
-                        <a class="red-color no-hover"><i class="fa fa-sort"></i><%= votes_count post.reactions %></a>
-                      </li>
-                      <li><a class="red-color no-hover"><i class="icon-chat"></i><%= post.replies.length %></a>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
+      <div class="text-center  section-padding-40">
+        <%= paginate posts, remote: true %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-xs btn-primary btn-accept-add-posts">
-          <%= t "ok" %>
-        </button>
-        <button type="button" class="btn btn-xs btn-primary btn-accept-add-posts" data-dismiss="modal" data-post-ids="1">
-          <%= t "close" %>
-        </button>
-      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-xs btn-primary" data-dismiss="modal">
+        <%= t "close" %>
+      </button>
+      <button type="button" class="btn btn-xs btn-primary btn-accept-add-posts">
+        <%= t "ok" %>
+      </button>
     </div>
   </div>
 </div>

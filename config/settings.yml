@@ -28,6 +28,8 @@ paginate_tags: 9
 paginate_little: 5
 paginate_index: 3
 paginate_user: 8
+paginate_series: 5
+paginate_post: 6
 reaction:
   like: "like"
   spam: "spam"
@@ -37,3 +39,5 @@ view_timeout: 15
 point:
   ten: 10
   twenty: 20
+series:
+  max_title: 60

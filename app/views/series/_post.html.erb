@@ -1,0 +1,32 @@
+<div class="media-group <%= 'post-item' if type == :update %>" id="<%= post.id %>">
+  <div class="media-group-item padding-left-10">
+    <div class="media">
+      <div class="media-left">
+        <div class="avatar popular-img avatar-md avatar-circle img-border-2">
+          <%= image_tag post.cover_image.url || "no_cover_image.png",class: "img-responsive middle-img" %>
+        </div>
+      </div>
+      <div class="media-body">
+        <% if type == :update %>
+          <div class="col-md-11 col-sm-11 co-xs-11">
+            <h5 class="media-heading"><%= link_to post.title, post %></h5>
+          </div>
+          <div class="col-md-1 col-sm-1 co-xs-1 ">
+              <i class="fa fa-link cycle-border add-post" data-id="<%= post.id %>"></i>
+          </div>
+        <% else %>
+          <div class="col-md-12 col-sm-12 co-xs-12">
+            <h5 class="media-heading"><%= link_to post.title, post %></h5>
+          </div>
+        <% end %>
+        <ul class="like-comment">
+          <li>
+            <span class="red-color no-hover"><i class="fa fa-sort"></i><%= votes_count post.reactions %></span>
+          </li>
+          <li><span class="red-color no-hover"><i class="icon-chat"></i><%= post.replies.length %></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
