@@ -364,3 +364,54 @@
   background: #fff;
 }
 
+
+
+.user-item .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+}
+
+.user-item {
+  padding: 30px 10px !important;
+  border-radius: 5px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.38);
+  position: relative;
+}
+.padding-15 {
+  padding: 10px;
+}
+.user-item .info-item {
+  border-radius: 5px;
+}
+.user-item p {
+  margin-bottom: 15px !important;
+}
+.ticker-follow-true {
+  position: absolute;
+  top: -14px;
+  right: 10px;
+  border: solid 1px;
+  padding: 0 5px;
+  margin: 0;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.32);
+  background-color: #5cb85c;
+  color: white;
+  border-radius: 5px
+}
+.ticker-follow-false {
+  display: none;
+}
+.user-item .user-name {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+.user-item .btn{
+  border-radius: 5px;
+}
+.user-item .btn, .tag-list .btn{
+  border-radius: 5px;
+}

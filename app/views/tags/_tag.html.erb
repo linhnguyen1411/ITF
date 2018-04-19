@@ -15,9 +15,13 @@
         <i class="fa fa-file-text-o bold-font" aria-hidden="true"></i>
         : <%= pluralize tag.posts_count, t(".post") %>
       </div>
-      <div class="tag-function">
-        <%= link_to "#", class: "btn btn-success btn-xs", disabled: true do %>
-          <%= t ".follow" %>
+      <div class="tag-function follow">
+        <% if user_signed_in? && is_following(tag) %>
+          <%= link_to t(".unfollow"), "javascript:void(0)", class: "btn btn-warning btn-xs",
+           data:{f_id: tag.id, f_type: tag.class.name, method: :delete, id: get_follow_id(tag)} %>
+        <% elsif user_signed_in? %>
+          <%= link_to t(".follow"), "javascript:void(0)", class: "btn btn-success btn-xs",
+           data:{f_id: tag.id, f_type: tag.class.name, method: :post, id: ""} %>
         <% end %>
       </div>
     </div>
