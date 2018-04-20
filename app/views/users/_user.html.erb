@@ -23,9 +23,11 @@
       <% if user_signed_in? && is_following(user) %>
         <%= link_to t(".unfollow"), "javascript:void(0)", class: "btn btn-warning btn-xs",
          data:{f_id: user.id, f_type: user.class.name, method: :delete, id: get_follow_id(user)} %>
-      <% elsif user_signed_in? %>
+      <% elsif user_signed_in? && current_user != user %>
         <%= link_to t(".follow"), "javascript:void(0)", class: "btn btn-success btn-xs",
          data:{f_id: user.id, f_type: user.class.name, method: :post, id: ""} %>
+      <% else user_signed_in? %>
+        <div class="btn-height"></div>
       <% end %>
     </div>
   </div>

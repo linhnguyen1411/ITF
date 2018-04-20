@@ -10,15 +10,6 @@ $(document).ready(function(){
       type: 'GET',
       dataType: 'script'
     });
-    $(this).removeClass('show-reply-form');
-    $(this).addClass('hide-reply-form');
-    if(type){
-      $(this).html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
-        + I18n.t('posts.show.' + type + '.cancel_reply'));
-    }else{
-      $(this).html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
-        + I18n.t('posts.show.cancel_reply'));
-    }
   });
 
   $(document).on('click', '.hide-reply-form', function(){

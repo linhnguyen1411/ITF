@@ -21,9 +21,14 @@
                   <%= image_tag like.user.avatar.url, class: "img-circle img-25 img-border" %>
                   <%= link_to like.user.name, like.user, class: "padding-left-10" %>
                 </div>
-                <div class="col-md-4">
-                  <%= link_to t("reactions.follow"), "javascript:void(0)",
-                    class: "btn btn-success btn-xs anonymous pull-right" %>
+                <div class="col-md-4 follow">
+                  <% if user_signed_in? && is_following(like.user) %>
+                    <%= link_to t(".unfollow"), "javascript:void(0)", class: "btn btn-warning btn-xs pull-right",
+                     data:{f_id: like.user.id, f_type: like.user.class.name, method: :delete, id: get_follow_id(like.user)} %>
+                  <% elsif user_signed_in? && current_user != like.user %>
+                    <%= link_to t(".follow"), "javascript:void(0)", class: "btn btn-success btn-xs pull-right",
+                     data:{f_id: like.user.id, f_type: like.user.class.name, method: :post, id: ""} %>
+                  <% end %>
                 </div>
               </div>
             <% end %>

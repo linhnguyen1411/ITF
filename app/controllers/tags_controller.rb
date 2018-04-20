@@ -18,6 +18,8 @@ class TagsController < ApplicationController
     end
   end
 
+  private
+
   def load_tag
     @tag = Tag.find_by id: params[:id]
     return if @tag
