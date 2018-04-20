@@ -6,3 +6,12 @@ $.each(ck, function(i) {
     CKEDITOR.replace(ck[i]);
   }
 })
+$('.show-reply-form').addClass('hide-reply-form');
+$('.show-reply-form').removeClass('show-reply-form');
+<% if @type %>
+  $('.show-reply-form').html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
+    + I18n.t('posts.show.' + type + '.cancel_reply'));
+<% else %>
+  $('.show-reply-form').html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
+    + I18n.t('posts.show.cancel_reply'));
+<% end %>

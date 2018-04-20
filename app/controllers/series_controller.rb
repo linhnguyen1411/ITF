@@ -1,6 +1,6 @@
 class SeriesController < ApplicationController
+  before_action :authenticate_user, only: [:new, :show, :create, :update]
   before_action :load_series, only: [:show, :update]
-
   def index
     @type = Series.name
     @series = Series.page(params[:page]).per Settings.paginate_series

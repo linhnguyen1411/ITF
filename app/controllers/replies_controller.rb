@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create]
   def new
     @reply = Reply.new replyable_id: params[:replyable_id], replyable_type: params[:replyable_type], parent_id: params[:parent_id]
     @type = params[:type]

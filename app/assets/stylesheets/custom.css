@@ -463,3 +463,10 @@
 .series .media-group {
   margin-bottom: 50px;
 }
+
+.btn-height {
+  height: 32px;
+}
+.btn-vote:focus {
+  color: #999;
+}

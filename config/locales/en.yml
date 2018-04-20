@@ -2,6 +2,9 @@ en:
   hello: "Hello world"
   close: "Close"
   ok: "Ok"
+  login_to_continue: "Please login to use this function."
+  cancel: "Cancel"
+  warning: "Warning"
   layouts:
     header:
       home: "Home"
@@ -16,7 +19,6 @@ en:
       create_series: "Create Series"
   page_title:
     home: "Home"
-
 
 
   devise:

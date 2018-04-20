@@ -1,4 +1,5 @@
 class ReactionsController < ApplicationController
+  before_action :authenticate_user, only: [:create]
   def index
     @reactions = Reaction.by_reactionable params[:type], params[:id]
   end

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :show]
   before_action :load_post, only: [:show]
   before_action :increase_views_count, only: :show
 
