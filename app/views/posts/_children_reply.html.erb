@@ -6,12 +6,20 @@
       <% image_tag reply.user.avatar.url, class: "img-border img-xs img-circle" %>
     <% end %>
   </div>
-  <div class="media-body no-padding-left">
+  <div class="media-body no-padding-left reply">
     <div class="mar-btm">
       <h4 class="pull-left">
         <%= link_to reply.user.name, reply.user,
         class: "btn-link text-semibold media-heading box-inline" %>
       </h4>
+      <% if check_user reply.user_id %>
+        <span class="pull-right">&nbsp;|
+          <%= link_to "javascript:void(0)", class: "edit-reply", data: {id: reply.id} do %>
+            <i class="fa fa-pencil-square-o margin-right-0" aria-hidden="true"></i>
+            <%= t ".edit" %>
+          <% end %>
+        </span>
+      <% end %>
       <p class="text-muted text-sm pull-right">
         <i class="fa fa-clock-o"></i>
         <%= time_ago_in_words reply.created_at %>
@@ -20,8 +28,10 @@
     <div class="reply-content">
       <%= raw reply.content %>
     </div>
-    <div class="pad-ver pull-right">
-      <%= render "posts/reaction_button", reactions: reply.reactions, reactionable: reply %>
+    <div class="row">
+      <div class="col-md-12 pad-ver pull-right margin-bottom-30">
+        <%= render "posts/reaction_button", reactions: reply.reactions, reactionable: reply %>
+      </div>
     </div>
     <div id="reply_form_<%= reply.id %>"></div>
   </div>

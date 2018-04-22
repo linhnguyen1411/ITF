@@ -470,3 +470,23 @@
 .btn-vote:focus {
   color: #999;
 }
+a:hover {
+  text-shadow: 0.5px 0.5px 3px;
+}
+.question-details .media-body span.pull-right a {
+  color: #be161e;
+}
+.btn-primary:focus, .btn-primary.focus {
+  color: #fff;
+  background-color: #222 !important;
+  border-color: #222 !important;
+}
+.btn-primary:hover, .btn-primary.hover {
+    color: #fff;
+    background-color: #be161e !important;
+    border-color: #be161e !important;
+}
+
+.reply-content {
+  position: relative;
+}

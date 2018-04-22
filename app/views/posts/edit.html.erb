@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-7 co-xs-12 text-left">
-            <h1><%= t ".page_title" %></h1>
+            <h1><%= t ".#{@post.type}.page_title" %></h1>
           </div>
           <div class="col-md-6 col-sm-5 co-xs-12 text-right">
             <div class="bread">
@@ -25,13 +25,11 @@
         <div class="row">
           <div class="col-sm-12 col-md-8 ">
             <div class="box-panel">
-              <h2><%= t ".page_title" %></h2>
-              <p><%= t ".instruction" %></p>
-              <hr>
-              <%= form_for @post, html: {class: "margin-top-40"}, remote: true do |f| %>
+              <%= form_for @post, remote: true do |f| %>
                 <div class="form-group">
                   <%= f.label :type %><span class="bold-red-text"> *</span>
-                  <%= f.select :type, options_for_select(list_of_post_types), {},class: "form-control" %>
+                  <%= f.select :type, options_for_select(list_of_post_types, @post.type),
+                  {}, class: "form-control", readonly: true %>
                 </div>
                 <div class="form-group">
                   <%= f.label :cover_image %>
@@ -52,7 +50,8 @@
                 </div>
                 <div class="form-group">
                   <label><%= t ".tags"%></label>
-                  <%= text_field_tag :tags, "", class: "form-control", data: {role: "tagsinput"} %>
+                  <%= text_field_tag :tags, @tags.pluck(:name).join(","),
+                    class: "form-control", data: {role: "tagsinput"} %>
                 </div>
                 <div class="form-group">
                   <label><%= t ".content"%></label><span class="bold-red-text"> *</span>

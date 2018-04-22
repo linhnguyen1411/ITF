@@ -9,12 +9,20 @@
       <% image_tag reply.user.avatar.url, class: "img-sm img-thumbnail" %>
     <% end %>
   </div>
-  <div class="media-body">
+  <div class="media-body reply">
     <div class="mar-btm">
       <h4 class="pull-left">
         <%= link_to reply.user.name, reply.user,
         class: "btn-link text-semibold media-heading box-inline" %>
       </h4>
+      <% if check_user reply.user_id %>
+        <span class="pull-right">&nbsp;|
+          <%= link_to "javascript:void(0)", class: "edit-reply", data: {id: reply.id} do %>
+            <i class="fa fa-pencil-square-o margin-right-0" aria-hidden="true"></i>
+            <%= t ".edit" %>
+          <% end %>
+        </span>
+      <% end %>
       <p class="text-muted text-sm pull-right">
         <i class="fa fa-clock-o"></i>
         <%= time_ago_in_words reply.created_at %>
@@ -40,17 +48,18 @@
     <div id="reply_form_<%= reply.id %>"></div>
   </div>
   <div id="children_replies_<%= reply.id %>" class="children-replies">
-      <% if reply.children_replies.present? %>
-        <div class="border-bottom-1 margin-bottom-30"></div>
-        <div class="thread-children-reply">
-          <%= render partial: "posts/children_reply", as: :reply, collection: reply.children_replies %>
-          <% if view_more_replies? reply.children_replies.length %>
-          <div class="view-more">
-            <%= link_to link_to_view_more_replies(reply.children_replies.length),
-              "javascript:void(0)", class: "link-to-view-more" %>
-          </div>
-        <% end %>
+    <% if reply.children_replies.present? %>
+      <div class="border-bottom-1 margin-bottom-30"></div>
+      <div class="thread-children-reply">
+        <%= render partial: "posts/children_reply", as: :reply,
+          collection: order_replies(reply.children_replies) %>
+        <% if view_more_replies? reply.children_replies.length %>
+        <div class="view-more">
+          <%= link_to link_to_view_more_replies(reply.children_replies.length),
+            "javascript:void(0)", class: "link-to-view-more" %>
         </div>
       <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -70,10 +70,36 @@ en:
       content: "Content"
       submit: "Publish Your Question"
       browse: "Browse…"
+    edit:
+      question:
+        page_title: "Update Your Question"
+      article:
+        page_title: "Update Your Article"
+      breadcrumb: "Update Post"
+      tags: "Tags"
+      placeholder:
+        add_a_tag: "Add A Tag"
+        content: "Update Your Content Here....."
+        title: "Your Post Title"
+      content: "Content"
+      submit: "Update Your Question"
+      browse: "Browse…"
     create:
       tag_error: "is invalid"
-      flash_success: "Create a successful post"
-      flash_danger: "Create a failed article"
+      question:
+        flash_success: "Create a successful question"
+        flash_danger: "Create a failed question"
+      article:
+        flash_success: "Create a successful article"
+        flash_danger: "Create a failed article"
+    update:
+      tag_error: "is invalid"
+      question:
+        flash_success: "Update a successful question"
+        flash_danger: "Update a failed question"
+      article:
+        flash_success: "Update a successful article"
+        flash_danger: "Update a failed article"
     show:
       article:
         page_title: "Article Detial"
@@ -90,10 +116,12 @@ en:
       cancel_reply: "Cancel reply"
       post_reply: "Reply"
       view: "View"
+      edit: "Edit"
     reply:
       view_more: "View more "
       replies: " replies"
       reply: "Reply"
+      edit: "Edit"
     index:
       article:
         page_title: "All Article"
@@ -127,8 +155,12 @@ en:
     new:
       article:
         post_reply: "Post comment"
+        cancel_reply: "Cancel comment"
       question:
         post_reply: "Post answer"
+        cancel_reply: "Cancel answer"
+      cancel_reply: "Cancel reply"
+      post_reply: "Reply"
     create:
       article:
         flash_success: "Create a successful comment"
@@ -149,6 +181,12 @@ en:
       question:
         post_reply: "Post answer"
       post_reply: "Reply"
+    edit:
+      cancel_edit: "Cancel edit"
+      update_reply: "Update reply"
+    update:
+      reply:
+        flash_danger: "Update a failed reply"
   flash:
     load:
       not_found: "%{resource} not found"

@@ -37,9 +37,17 @@
                       <i class="fa fa fa-eye" aria-hidden="true"></i>
                       <%= pluralize views_count(@post.views), t(".view") %>
                     </span>
+                    <% if check_user @post.user_id %>
+                      <span class="pull-right">
+                        <%= link_to edit_post_path(@post) do %>
+                          <i class="fa fa-pencil-square-o margin-right-0" aria-hidden="true"></i>
+                          <%= t ".edit" %>
+                        <% end %>
+                      </span>
+                    <% end %>
                   </div>
                 </div>
-                <div class="col-md-11 col-sm-11 col-xs-10">
+                <div class="col-md-11 col-sm-11 col-xs-10 reply">
                   <div class="post-content margin-bottom-20">
                     <%= raw @post.content %>
                   </div>

@@ -23,9 +23,26 @@ $(document).ready(function(){
       $(this).html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
         + I18n.t('posts.show.post_reply'));
     }
-
     $(this).removeClass('hide-reply-form');
     $(this).addClass('show-reply-form');
+  });
+
+  $(document).on('click', '.edit-reply', function(){
+    var id = $(this).data('id');
+    $.ajax({
+      url: '/replies/' + id + '/edit',
+      type: 'GET',
+      dataType: 'script'
+    });
+  });
+
+  $(document).on('click', '.cancel-edit-reply', function(){
+    var id = $(this).data('id');
+    $('#reply_form_' + id).slideUp(500).hide(500);
+    $(this).html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i> '
+      + I18n.t('posts.reply.edit'));
+    $(this).removeClass('cancel-edit-reply');
+    $(this).addClass('edit-reply');
   });
 
   $(document).on('click', '.link-to-view-more', function(){
