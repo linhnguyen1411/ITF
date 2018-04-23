@@ -6,6 +6,8 @@ class Tag < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.tag.max_name,
     minimum: Settings.tag.min_name}
 
+  acts_as_paranoid
+
   scope :order_by, -> {left_joins(:post_tags).group "tags.id" }do
     def posts_count
       order "count(post_tags.id) desc"

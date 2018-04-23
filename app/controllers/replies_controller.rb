@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
   before_action :authenticate_user, only: [:new, :create]
-  before_action :load_reply, only: [:edit, :update]
-  before_action :check_user, only: [:edit, :update]
+  before_action :load_reply, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   def new
     @reply = Reply.new replyable_id: params[:replyable_id], replyable_type: params[:replyable_type], parent_id: params[:parent_id]
@@ -26,6 +26,16 @@ class RepliesController < ApplicationController
     @success = @reply.update_attributes update_params
   end
 
+  def destroy
+    if @reply.destroy
+      flash[:success] = t ".#{@reply.replyable.try(:type)}.flash_success" if params[:reload] == true.to_s
+    else
+      flash[:danger] = t ".#{@reply.replyable.try(:type)}.flash_danger" if params[:reload] == true.to_s
+    end
+    respond_to do |format|
+      format.json {render json: (post_path(@reply.replyable).to_sym if params[:reload] == true.to_s)}
+    end
+  end
   private
 
   def create_params

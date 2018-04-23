@@ -1,7 +1,7 @@
 class SeriesController < ApplicationController
   before_action :authenticate_user, only: [:new, :show, :create, :update]
-  before_action :load_series, only: [:show, :edit, :update]
-  before_action :check_user, only: [:edit, :update]
+  before_action :load_series, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
   def index
     @type = Series.name
     @series = Series.includes_full.page(params[:page]).per Settings.paginate_series
@@ -59,6 +59,17 @@ class SeriesController < ApplicationController
     end
   rescue
     flash[:danger] = t ".flash_danger.add_posts"
+  end
+
+  def destroy
+    if @series.destroy
+      flash[:success] = t ".flash_success"
+    else
+      flash[:danger] = t ".flash_danger"
+    end
+    respond_to do |format|
+      format.json {render json: root_path.to_sym}
+    end
   end
 
   private

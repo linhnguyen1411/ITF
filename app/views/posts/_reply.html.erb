@@ -21,6 +21,12 @@
             <i class="fa fa-pencil-square-o margin-right-0" aria-hidden="true"></i>
             <%= t ".edit" %>
           <% end %>
+          &nbsp;|&nbsp;
+          <%= link_to "javascript:void(0)", class: "delete", data:{controller: :replies, id: reply.id,
+            reload: true, klass: t(".#{reply.replyable.try(:type)}.reply_down")} do %>
+            <i class="fa fa-trash-o margin-right-0" aria-hidden="true"></i>
+            <%= t ".delete" %>
+          <% end %>
         </span>
       <% end %>
       <p class="text-muted text-sm pull-right">
