@@ -107,12 +107,14 @@ en:
         post_reply: "Post comment"
         cancel_reply: "Cancel comment"
         thread_reply: "Thread comment"
+        reply: "Comment"
       question:
         page_title: "Question Detial"
         breadcrumb: "Question Detial"
         post_reply: "Post answer"
         cancel_reply: "Cancel answer"
         thread_reply: "Thread answer"
+        reply: "Answer"
       cancel_reply: "Cancel reply"
       post_reply: "Reply"
       view: "View"
@@ -138,7 +140,7 @@ en:
       popular_tags: "Popular Tags"
     popular_tags: "Popular Tags"
     user:
-      point: "Points : "
+      point: " Points"
     post:
       article:
         replies: "Comments"
@@ -147,6 +149,7 @@ en:
       votes: "Votes"
       more: "MORE"
       view: "View"
+      views: "Views"
     popular_post:
       view: "View"
       views: "Views: "
@@ -190,6 +193,8 @@ en:
   flash:
     load:
       not_found: "%{resource} not found"
+    check_user:
+      not_allowed: "User isn't allowed"
   reactions:
     target_type:
       like: "Like"
@@ -214,6 +219,12 @@ en:
       hightest_votes_article: "Hightest Voted Articles"
       all_tag: "All Tags"
       popular_tags: "Popular Tags"
+      popular_series: "Popular Series"
+      all_series: "All series"
+    article:
+      views: "Views"
+      votes: "Votes"
+      comments: "Comments"
   tags:
     show:
       follower: "Follower"
@@ -249,26 +260,43 @@ en:
       content: "Content"
       submit: "Create Series"
       browse: "Browse…"
+    edit:
+      page_title: "Update Your Series"
+      breadcrumb: "Update Series"
+      placeholder:
+        content: "Update Your Content Here....."
+        title: "Your Series Title"
+      content: "Content"
+      submit: "Update Series"
+      browse: "Browse…"
     show:
-      page_title: "Post Series "
+      page_title: "Series Detial "
       breadcrumb: "Series Detial"
       post_reply: "Post comment"
       cancel_reply: "Cancel comment"
       thread_reply: "Thread comment"
       view: "view"
       add_posts: "Add Posts"
+      comment: "Comment"
+      edit: "Edit"
     post_list_modal:
       add_posts: "Add Posts"
+    popular_series:
+      vote: "Vote"
     create:
       flash_success: "Create a successful series"
+      flash_danger: "Create a failed series"
     update:
       flash_success:
         add_posts: "Add the successful posts"
+        update_series: "Update a successful series"
       flash_danger:
         add_posts: "Add the failed posts"
+        update_series: "Update a failed series"
     series:
       votes: "Votes"
       comments: "Comments"
+      views: "Views"
     index:
       top_users: "Top Users"
       popular_tags: "Popular Tags"

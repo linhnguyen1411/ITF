@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @type = params[:type]
     if Post.types.include? @type
       @posts = Post.send(@type).includes_full.page(params[:page]).per Settings.paginate_post
-      @popular_posts = Post.send(@type).order_by_views_count.limit Settings.paginate_little
+      @popular_posts = Post.send(@type).include_user.order_by_views_count.limit Settings.paginate_little
       @popular_tags = Tag.order_by.posts_count.include_posts_count.limit Settings.paginate_default
       @top_users = User.order_by_point.limit Settings.paginate_little
       respond_to do |format|
@@ -105,7 +105,7 @@ class PostsController < ApplicationController
     return if current_user.id == @post.user_id
     respond_to do |format|
       format.html {redirect_to root_path}
-      format.json {render json: {type: false, not_login: true}}
+      format.json {render json: false}
       format.js {render}
     end
   end

@@ -33,11 +33,10 @@ class Post < ApplicationRecord
     left_joins(:views).group("posts.id").order("sum(amount) desc, created_at desc").select("posts.*, sum(amount) as views_count")
     .merge(include_user)
   end
-
+  scope :include_user, -> {includes(:user)}
   scope :not_belong_to_series, -> series_id {where series_id: [nil, series_id]}
   private
 
-  scope :include_user, -> {includes(:user)}
   scope :include_tags, -> {includes(:tags)}
   scope :include_reactions, -> {includes(:reactions)}
   scope :include_replies, -> {includes(:replies)}

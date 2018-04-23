@@ -6,9 +6,11 @@
       </div>
     </div>
     <div class="media-body">
-      <h5 class="media-heading"><%= link_to user.name, user %></h5>
+      <h5 class="media-heading"><%= link_to user.name, user, class: "side-post-title" %></h5>
       <small class="media-meta">Software Engineer</small>
-      <div class="points pull-right"><span><%= t ".point" %></span><%= user.point %></div>
+      <div class="points pull-right">
+        <span class="yellow-color"><i class="fa fa-trophy">&nbsp;</i><%= user.point %><%= t ".point" %></span>
+      </div>
     </div>
   </div>
 </div>

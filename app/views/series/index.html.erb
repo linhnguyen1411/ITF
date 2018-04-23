@@ -25,6 +25,34 @@
         <div class="col-sm-12 col-xs-12 col-md-4">
           <div class="side-bar">
             <div class="widget">
+              <div class="latest-news">
+                <h2><%= t ".popular_series" %></h2>
+                <hr class="widget-separator no-margin">
+                <div class="media-group popular-posts">
+                  <%= render partial: "popular_series", collection: @popular_series, as: :series %>
+                </div>
+                <div class="margin-right-15 pull-right">
+                  <%= link_to series_index_path, class: "green-color" do %>
+                    <i class="fa fa-list-alt"></i>
+                    <%= t ".all_series" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="widget">
+              <h2><%= t ".top_users" %></h2>
+              <hr class="widget-separator no-margin">
+              <div class="media-group">
+                <%= render partial: "posts/user", collection: @top_users, as: :user %>
+              </div>
+              <div class="margin-right-15 pull-right">
+                <%= link_to users_path, class: "yellow-color" do %>
+                  <i class="fa fa-users"></i>
+                  <%= t ".all_users" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="widget">
               <div class="widget_tag_cloud">
                 <h2><%= t ".popular_tags" %></h2>
                 <hr class="widget-separator no-margin">
@@ -37,24 +65,11 @@
                   <% end %>
                 </div>
                 <div class="all_tags pull-right">
-                  <%= link_to tags_path do %>
+                  <%= link_to tags_path, class: "red-color" do %>
                     <span class="glyphicon glyphicon-tags"></span>
                     <%= t ".all_tag" %>
                   <% end %>
                 </div>
-              </div>
-            </div>
-            <div class="widget">
-              <h2><%= t ".top_users" %></h2>
-              <hr class="widget-separator no-margin">
-              <div class="media-group">
-                <%= render partial: "posts/user", collection: @top_users, as: :user %>
-              </div>
-              <div class="margin-right-15 pull-right">
-                <%= link_to users_path do %>
-                  <i class="fa fa-users"></i>
-                  <%= t ".all_users" %>
-                <% end %>
               </div>
             </div>
           </div>

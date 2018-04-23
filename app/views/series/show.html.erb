@@ -34,9 +34,21 @@
                       <%= time_ago_in_words @series.created_at %>
                     </span>
                     <span>
+                      <i class="fa fa-comments %>" aria-hidden="true"></i>
+                      <%= pluralize @series.replies.length, t(".comment") %>
+                    </span>
+                    <span>
                       <i class="fa fa fa-eye" aria-hidden="true"></i>
                       <%= pluralize views_count_of_series(@posts), t(".view") %>
                     </span>
+                    <% if check_user @series.user_id %>
+                      <span class="pull-right">
+                        <%= link_to edit_series_path(@series) do %>
+                          <i class="fa fa-pencil-square-o margin-right-0" aria-hidden="true"></i>
+                          <%= t ".edit" %>
+                        <% end %>
+                      </span>
+                    <% end %>
                   </div>
                 </div>
                 <div class="col-md-11 col-sm-11 col-xs-10 reply">
@@ -46,19 +58,19 @@
                   <div class="row">
                     <%if @posts.present? %>
                       <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
-                        <div class="post-list-custom-modal post-list">
-                            <div class="section-title-line">
-                              <h1 class="text-bold"><%= t ".aritcle_list" %></h1>
-                              <hr class="filler-line mb-05">
-                            </div>
-                          <%= render partial: "series/post", collection: @posts, locals:{type: :show} %>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
-                        <div class="tagcloud pull-right">
+                        <div class="tagcloud pull-left">
                           <% get_tag_list(@posts).each do |tag| %>
                             <%= link_to tag.name, tag %>
                           <% end %>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+                        <div class="post-list-custom-modal post-list">
+                          <div class="section-title-line">
+                            <h1 class="text-bold"><%= t ".aritcle_list" %></h1>
+                            <hr class="filler-line mb-05">
+                          </div>
+                          <%= render partial: "series/post", collection: @posts, locals:{type: :show} %>
                         </div>
                       </div>
                     <% end %>
@@ -71,10 +83,12 @@
                       <% end %>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-30">
-                      <%= link_to posts_path(type: :series, series_id: @series.id), remote: true,
-                        class: "btn btn-primary btn-small pull-right" do %>
-                        <i class="fa fa-plus-circle " aria-hidden="true"></i>
-                        <%= t ".add_posts" %>
+                      <% if check_user @series.user_id %>
+                        <%= link_to posts_path(type: :series, series_id: @series.id), remote: true,
+                          class: "btn btn-primary btn-small pull-right" do %>
+                          <i class="fa fa-plus-circle " aria-hidden="true"></i>
+                          <%= t ".add_posts" %>
+                        <% end %>
                       <% end %>
                     </div>
                   </div>
@@ -168,4 +182,6 @@
   </div>
   <div id="view_reaction_user_list"></div>
   <div class="modal fade" id="post_list_modal" data-post-ids='<%= @selected_post_id_list %>'
+    data-current='<%= @selected_post_id_list %>'></div>
+  <div class="modal fade" id="post_list_modal1" data-post-ids='<%= @selected_post_id_list %>'
     data-current='<%= @selected_post_id_list %>'></div>

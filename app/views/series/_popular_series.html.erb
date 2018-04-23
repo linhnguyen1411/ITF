@@ -1,0 +1,18 @@
+<div class="media-group-item article">
+  <div class="media">
+    <div class="media-left">
+      <div class="avatar avatar-md avatar-circle img-border-2">
+        <%= image_tag series.cover_image.url || "image_series.jpg",class: "img-responsive middle-img" %>
+      </div>
+    </div>
+    <div class="media-body">
+      <h5 class="media-heading"><%= link_to series.title.truncate(30, separator: ' '), series, class: "side-post-title" %></h5>
+      <%= link_to series.user do %>
+        <small class="media-meta"><%= series.user.name %></small>
+      <% end %>
+      <div class="points pull-right">
+        <span class="green-color"><i class="fa fa-sort">&nbsp;</i><%= pluralize votes_count(series.reactions), t(".vote") %></span>
+      </div>
+    </div>
+  </div>
+</div>

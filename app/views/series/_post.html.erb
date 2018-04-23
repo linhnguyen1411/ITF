@@ -21,9 +21,11 @@
         <% end %>
         <ul class="like-comment">
           <li>
-            <span class="red-color no-hover"><i class="fa fa-sort"></i><%= votes_count post.reactions %></span>
+            <span class="blue-color no-hover"><i class="fa fa-sort"></i><%= votes_count post.reactions %></span>
           </li>
-          <li><span class="red-color no-hover"><i class="icon-chat"></i><%= post.replies.length %></span>
+          <li><span class="blue-color no-hover"><i class="icon-chat"></i><%= post.replies.length %></span>
+          </li>
+          <li><span class="blue-color no-hover"><i class="fa fa-eye"></i><%= post.views.length %>
           </li>
         </ul>
       </div>

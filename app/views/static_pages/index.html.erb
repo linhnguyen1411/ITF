@@ -61,7 +61,7 @@
                   <%= render partial: "posts/user", collection: @top_users, as: :user %>
                 </div>
                 <div class="margin-right-15 pull-right">
-                  <%= link_to users_path do %>
+                  <%= link_to users_path, class: "yellow-color" do %>
                     <i class="fa fa-users"></i>
                     <%= t ".all_users" %>
                   <% end %>
@@ -80,7 +80,7 @@
                     <% end %>
                   </div>
                   <div class="all_tags pull-right">
-                    <%= link_to tags_path do %>
+                    <%= link_to tags_path, class: "red-color" do %>
                       <span class="glyphicon glyphicon-tags"></span>
                       <%= t ".all_tag" %>
                     <% end %>
