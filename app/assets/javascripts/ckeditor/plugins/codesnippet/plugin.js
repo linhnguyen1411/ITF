@@ -71,7 +71,7 @@
         var hljsHighlighter = new CKEDITOR.plugins.codesnippet.highlighter( {
           languages: {
             cpp: 'C++',
-            cs: 'C#',
+            csharp: 'C#',
             css: 'CSS',
             html: 'HTML',
             java: 'Java',
@@ -330,15 +330,7 @@
 
       // Upcasts <pre><code [class="language-*"]>...</code></pre>
       upcast: function( el, data ) {
-        if ( el.name != 'pre' )
-          return;
-        var matchResult = editor._.codesnippet.langsRegex.exec( code.attributes[ 'class' ] );
-        if ( matchResult )
-          data.lang = matchResult[ 1 ];
-        textarea.setHtml( code.getHtml() );
-        data.code = textarea.getValue();
-        code.addClass( codeClass );
-        return el;
+        return ;
       },
 
       downcast: function( el ) {

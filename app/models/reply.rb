@@ -2,7 +2,7 @@ class Reply < ApplicationRecord
   belongs_to :user
   belongs_to :replyable, optional: true, polymorphic: true
   belongs_to :parent_reply, class_name: Reply.name, foreign_key: :parent_id, optional: true
-  has_many :children_replies, class_name: Reply.name, foreign_key: :parent_id,
+  has_many :children_replies,-> {merge order_by_reaction_count}, class_name: Reply.name, foreign_key: :parent_id,
     dependent: :destroy, inverse_of: :parent_reply
   has_many :reactions, as: :reactionable, dependent: :destroy
 
@@ -15,11 +15,12 @@ class Reply < ApplicationRecord
     merge(include_user).merge(include_children_replies).merge include_reactions
   end
 
-  # scope :order_by_reaction_count, -> do
-  #   joins("LEFT JOIN reactions ON reactions.deleted_at is NULL and target_type = 0
-  #     and reactions.reactionable_id = replies.id and reactions.reactionable_type = 'Reply'")
-  #   .group("replies.id").order("count(reactions.id) desc")
-  # end
+  scope :order_by_reaction_count, -> do
+    joins("LEFT JOIN reactions ON reactions.reactionable_id = replies.id
+      and reactions.reactionable_type = 'Reply'
+      and reactions.deleted_at is NULL and target_type = #{Reaction.target_types[:like]}")
+    .group("replies.id").order("count(reactions.id) desc")
+  end
 
   private
 

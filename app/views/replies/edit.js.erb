@@ -1,0 +1,19 @@
+$('#reply_form_<%= @reply.id %>')
+.html('<%= j(render"replies/form", reply: @reply, submit: t(".update_reply"), type: nil) %>')
+  .hide().delay(100).slideDown(700);
+var ck = $('.ckeditor');
+$.each(ck, function(i) {
+  if (ck[i].id == 'reply_content_<%= @reply.id %>'){
+    CKEDITOR.replace(ck[i]);
+  }
+})
+var edit_reply = $('#reply_form_<%= @reply.id %>').closest('.reply').find('.edit-reply');
+edit_reply.addClass('cancel-edit-reply');
+edit_reply.removeClass('edit-reply');
+edit_reply.html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
+  + '<%= t ".cancel_edit" %>');
+var cancel_reply = $('#reply_form_<%= @reply.id %>').closest('.reply').find('.hide-reply-form');
+cancel_reply.addClass('show-reply-form');
+cancel_reply.removeClass('hide-reply-form');
+cancel_reply.html('<i class="fa fa-times-circle-o" aria-hidden="true"></i> '
+  + I18n.t('posts.show.post_reply'));

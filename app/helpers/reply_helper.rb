@@ -16,10 +16,4 @@ module ReplyHelper
   def order_replies replies
     replies.partition{ |reply| reply.user_id == current_user.id }.flatten
   end
-
-  private
-
-  def replies_by_user replies
-    replies.select { |reply| reply.user_id == current_user.id }
-  end
 end

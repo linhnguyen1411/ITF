@@ -1,0 +1,15 @@
+<% if @success %>
+  $('#reply_form_<%= @reply.id %>').closest('.reply').find('.reply-content')
+    .html('<%= j(raw @reply.content) %>').animate({left: '-500px'}, 150).animate({left: '0px'}, 500);
+  $('#reply_form_<%= @reply.id %>').closest('.reply').find('.cancel-edit-reply').trigger('click');
+<% else %>
+  swal({
+    position: 'top-end',
+    type: 'error',
+    title: I18n.t('replies.update.reply.flash_danger'),
+    text: "",
+    timer: 1000,
+    showConfirmButton: false,
+  }).catch(swal.noop);
+<% end %>
+<% flash.clear %>

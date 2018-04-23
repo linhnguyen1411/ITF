@@ -18,4 +18,8 @@ module PostHelper
   def views_count_of_series posts
     posts.map{|post| views_count post.views}.inject(:+)
   end
+
+  def check_user user_id
+    current_user.id == user_id
+  end
 end

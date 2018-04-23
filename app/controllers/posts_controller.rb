@@ -1,10 +1,15 @@
 class PostsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :show]
-  before_action :load_post, only: [:show]
+  before_action :load_post, only: [:show, :edit, :update]
+  before_action :check_user, only: [:edit, :update]
   before_action :increase_views_count, only: :show
 
   def new
     @post = Post.new
+  end
+
+  def edit
+    @tags = @post.tags
   end
 
   def index
@@ -30,16 +35,33 @@ class PostsController < ApplicationController
   end
 
   def show
-    @replies = Reply.by_replyable(@post).includes_full
+    @replies = Reply.by_replyable(@post).order_by_reaction_count.includes_full
     @votes = @post.reactions.include_user
   end
 
   def create
-    @post = current_user.posts.build post_params
+    @post = current_user.posts.build create_params
     Post.transaction do
       @post.save!
       save_post_tags(@post, params[:tags]) if params[:tags].present?
-      flash[:success] = t ".flash_success"
+      flash[:success] = t ".#{@post.type}.flash_success"
+      respond_to do |format|
+        format.js
+      end
+    end
+  rescue
+    @post.errors.add(:tags, t(".tag_error")) if @post.errors.blank?
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    Post.transaction do
+      @post.update_attributes update_params
+      @post.tags.destroy_all unless @post.tags.pluck(:name).join(",") == params[:tags]
+      save_post_tags(@post, params[:tags]) unless @post.tags.pluck(:name).join(",") == params[:tags]
+      flash[:success] = t ".#{@post.type}.flash_success"
       respond_to do |format|
         format.js
       end
@@ -53,10 +75,13 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
+  def create_params
     params.require(:post).permit :type, :title, :content, :cover_image
   end
 
+  def update_params
+    params.require(:post).permit :title, :content, :cover_image
+  end
   def save_post_tags post, tag
     params[:tags].split(",").each do |item|
       @post.post_tags.create! tag: Tag.find_or_create_by!(name: item)
@@ -74,5 +99,14 @@ class PostsController < ApplicationController
     @view = current_user.views.find_or_create_by(post_id: @post.id)
     return if @view.updated_at > Settings.view_timeout.minutes.ago
     @view.update_attributes amount: @view.amount + Settings.one
+  end
+
+  def check_user
+    return if current_user.id == @post.user_id
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.json {render json: {type: false, not_login: true}}
+      format.js {render}
+    end
   end
 end

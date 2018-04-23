@@ -2,7 +2,7 @@
   var children_replies = '#children_replies_<%= @reply.parent_id %>';
   $('<%= j render partial: "posts/children_reply", collection: [@reply], as: :reply %>')
     .hide().prependTo(children_replies).delay(500).slideDown(500);
-  $('.hide-reply-form').trigger('click');
+  $('#reply_form_<%= @reply.parent_id %>').closest('.reply').find('.hide-reply-form').trigger('click');
 <% else %>
   swal({
     position: 'top-end',
