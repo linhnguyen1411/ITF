@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   has_many :reactions, as: :reactionable, dependent: :destroy
   has_many :views, dependent: :destroy
 
+  acts_as_paranoid
+
   mount_uploader :cover_image, ImageUploader
 
   enum type: {article: 0, question: 1}

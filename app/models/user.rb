@@ -12,6 +12,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_paranoid
+
   mount_uploader :avatar, ImageUploader
 
   validates :name, presence: true, length: {maximum: Settings.user.max_name,

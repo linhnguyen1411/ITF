@@ -1,5 +1,5 @@
 <div class="media-block chidrent-reply ribbon-content
-  <%= "hide-replies" if hide_replies? reply_counter %>">
+  <%= "hide-replies" if hide_replies? reply_counter %>", id="reply_<%= reply.id %>">
   <div class="media-left">
     <%= link_to reply.user, data: {toggle: "tooltip", placement: "bottom",
       original_title: reply.user.name} do %>
@@ -17,6 +17,12 @@
           <%= link_to "javascript:void(0)", class: "edit-reply", data: {id: reply.id} do %>
             <i class="fa fa-pencil-square-o margin-right-0" aria-hidden="true"></i>
             <%= t ".edit" %>
+          <% end %>
+          &nbsp;|&nbsp;
+          <%= link_to "javascript:void(0)", class: "delete", data:{controller: :replies, id: reply.id,
+            reload: false, klass: t(".reply")} do %>
+            <i class="fa fa-trash-o margin-right-0" aria-hidden="true"></i>
+            <%= t ".delete" %>
           <% end %>
         </span>
       <% end %>

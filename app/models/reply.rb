@@ -6,6 +6,8 @@ class Reply < ApplicationRecord
     dependent: :destroy, inverse_of: :parent_reply
   has_many :reactions, as: :reactionable, dependent: :destroy
 
+  acts_as_paranoid
+
   validates :content, presence: true
 
   scope :by_replyable, -> replyable do

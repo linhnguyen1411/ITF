@@ -7,6 +7,9 @@ class Series < ApplicationRecord
   validates :title, presence: true, length: {maximum: Settings.series.max_title,
     minimum: Settings.series.min_title}
   validates :content, presence: true
+
+  acts_as_paranoid
+
   scope :includes_full, -> do
     merge(include_posts).merge(includes_user).merge include_reactions
   end

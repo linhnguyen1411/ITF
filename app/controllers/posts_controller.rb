@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :show]
-  before_action :load_post, only: [:show, :edit, :update]
-  before_action :check_user, only: [:edit, :update]
+  before_action :load_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
   before_action :increase_views_count, only: :show
 
   def new
@@ -70,6 +70,17 @@ class PostsController < ApplicationController
     @post.errors.add(:tags, t(".tag_error")) if @post.errors.blank?
     respond_to do |format|
       format.js
+    end
+  end
+
+  def destroy
+    if @post.destroy
+      flash[:success] = t ".#{@post.type}.flash_success"
+    else
+      flash[:danger] = t ".#{@post.type}.flash_danger"
+    end
+    respond_to do |format|
+      format.json {render json: root_path.to_sym}
     end
   end
 
