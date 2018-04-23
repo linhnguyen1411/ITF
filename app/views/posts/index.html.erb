@@ -36,11 +36,11 @@
                   <div class="latest-news">
                     <h2><%= t ".#{@type}.popular_post" %></h2>
                     <hr class="widget-separator no-margin">
-                    <div class="popular-posts">
+                    <div class="media-group popular-posts">
                       <%= render partial: "popular_post", collection: @popular_posts, as: :post %>
                     </div>
                     <div class="margin-right-15 pull-right">
-                      <%= link_to posts_path(type: :question) do %>
+                      <%= link_to posts_path(type: :question), class: "green-color" do %>
                         <i class="fa fa-question-circle "></i>
                         <%= t ".#{@type}.all_post" %>
                       <% end %>
@@ -54,7 +54,7 @@
                     <%= render partial: "user", collection: @top_users, as: :user %>
                   </div>
                   <div class="margin-right-15 pull-right">
-                    <%= link_to users_path do %>
+                    <%= link_to users_path, class: "yellow-color" do %>
                       <i class="fa fa-users"></i>
                       <%= t ".all_users" %>
                     <% end %>
@@ -73,7 +73,7 @@
                       <% end %>
                     </div>
                     <div class="all_tags pull-right">
-                      <%= link_to tags_path do %>
+                      <%= link_to tags_path, class: "red-color" do %>
                         <span class="glyphicon glyphicon-tags"></span>
                         <%= t ".all_tag" %>
                       <% end %>
@@ -89,7 +89,7 @@
       <section id="blog" class="custom-padding white">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 col-xs-12 col-md-8 col-md-push-4">
+          <div class="col-md-8 col-sm-12">
             <div id="posts-masonry" class="posts-masonry">
               <%= render partial: "post", collection: @posts %>
             </div>
@@ -98,18 +98,18 @@
               <%= paginate @posts %>
             </div>
           </div>
-          <div class="col-sm-12 col-xs-12 col-md-4 col-md-pull-8">
+          <div class="col-md-4 col-sm-12">
             <div class="side-bar">
               <div class="widget">
                 <div class="latest-news">
                   <h2><%= t ".#{@type}.popular_post" %></h2>
                   <hr class="widget-separator no-margin">
-                  <div class="news-post">
+                  <div class="media-group">
                     <%= render partial: "popular_post", collection: @popular_posts, as: :post %>
                   </div>
                   <div class="margin-right-15 pull-right">
-                    <%= link_to posts_path(type: :article) do %>
-                      <i class="fa fa-file-text-o"></i>
+                    <%= link_to posts_path(type: :article), class: "green-color" do %>
+                      <i class="fa fa-file-text"></i>
                       <%= t ".#{@type}.all_post" %>
                     <% end %>
                   </div>
@@ -122,7 +122,7 @@
                   <%= render partial: "user", collection: @top_users, as: :user %>
                 </div>
                 <div class="margin-right-15 pull-right">
-                  <%= link_to users_path do %>
+                  <%= link_to users_path, class: "yellow-color" do %>
                     <i class="fa fa-users"></i>
                     <%= t ".all_users" %>
                   <% end %>
@@ -141,7 +141,7 @@
                     <% end %>
                   </div>
                   <div class="all_tags pull-right">
-                    <%= link_to tags_path do %>
+                    <%= link_to tags_path, class: "red-color" do %>
                       <span class="glyphicon glyphicon-tags"></span>
                       <%= t ".all_tag" %>
                     <% end %>

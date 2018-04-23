@@ -19,9 +19,9 @@ $(document).ready(function(){
     $.ajax({
       url: window.location.pathname  + '?post_ids=' + post_ids,
       type: 'PUT',
-      dataType: 'html',
+      dataType: 'json',
       success: function (data) {
-        window.location.replace(window.location.pathname);
+        window.location.reload();
       },
       error: function () {
         response([]);
@@ -29,6 +29,6 @@ $(document).ready(function(){
     });
   });
   $('#post_list_modal').on('hidden.bs.modal', function () {
-    $('#post_list_modal').data('post-ids', $('#post_list_modal').data('current'));
+    $('#post_list_modal').data('post-ids', $('#post_list_modal').data('current').slice());
   })
 });

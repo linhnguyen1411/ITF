@@ -1,0 +1,12 @@
+<% if flash[:success] %>
+  window.location.replace('<%= series_path(@series) %>');
+<% else %>
+  $('#error_message').html('<%= raw(@series.errors.full_messages.map { |msg| content_tag(:li, msg) }.join) %>');
+  swal({
+    position: 'top-end',
+    type: 'error',
+    title: I18n.t('series.update.flash_danger.update_series'),
+    showConfirmButton: false,
+    timer: 1000
+  });
+<% end %>

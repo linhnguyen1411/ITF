@@ -8,4 +8,8 @@ module SeriesHelper
     end
     tag_list.uniq
   end
+
+  def views_count_of_series posts
+    posts.map{|post| views_count post.views}.inject(:+) || 0
+  end
 end
