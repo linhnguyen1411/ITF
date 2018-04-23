@@ -133,6 +133,7 @@ en:
         reply_down: "comment"
       question:
         reply_down: "answer"
+      correct_answer: "Correct answer"
     index:
       article:
         page_title: "All Article"

@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
   before_action :authenticate_user, only: [:new, :create]
   before_action :load_reply, only: [:edit, :update, :destroy]
-  before_action :check_user, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :destroy]
 
   def new
     @reply = Reply.new replyable_id: params[:replyable_id], replyable_type: params[:replyable_type], parent_id: params[:parent_id]
@@ -23,7 +23,17 @@ class RepliesController < ApplicationController
   end
 
   def update
-    @success = @reply.update_attributes update_params
+    @success = if params[:correct].present?
+      if @reply.replyable.user_id == current_user.id && @reply.user_id != current_user.id
+        @reply.update_attributes correct_answer: (params[:correct].to_sym == :true)
+      end
+    else
+      @reply.update_attributes(update_params) if check_user
+    end
+    respond_to do |format|
+      format.js
+      format.json {render json: @success}
+    end
   end
 
   def destroy
