@@ -1,8 +1,26 @@
 <div class="media-block card-box ribbon-content">
-  <% if reply.correct_answer %>
-    <div class="ribbon base"><span><%= t ".correct_answer" %></span></div>
-  <% end %>
-
+  <div id="correct_answer_<%= reply.id %>">
+    <% if reply.correct_answer %>
+      <div class="ribbon base right">
+        <span><%= t ".correct_answer" %>
+          <% if check_user(reply.replyable.user_id) %>
+            &nbsp;
+            <%= link_to "javascript:void(0)", class: "vote-correct",
+              data: {id: reply.id, correct: false} do %>
+              <i class="fa fa-times-circle-o not-correct"></i>
+            <% end %>
+          <% end %>
+        </span>
+      </div>
+    <% else %>
+      <% if check_user(reply.replyable.user_id) && !check_user(reply.user_id) %>
+        <%= link_to "javascript:void(0)", class: "btn btn-sm vote-correct correct-answer left",
+          data: {id: reply.id, correct: true} do %>
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="media-left">
     <%= link_to reply.user, data: {toggle: "tooltip", placement: "bottom",
       original_title: reply.user.name} do %>
@@ -33,6 +51,7 @@
         <i class="fa fa-clock-o"></i>
         <%= time_ago_in_words reply.created_at %>
       </p>
+
     </div>
     <div class="reply-content">
       <%= raw reply.content %>

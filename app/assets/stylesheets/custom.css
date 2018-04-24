@@ -562,3 +562,54 @@ a:hover {
   padding-bottom: 25px;
   margin-bottom: 25px;
 }
+.ribbon-content .ribbon.right {
+  position: absolute;
+  top: -18px;
+  right: -5px;
+  padding: 5px;
+}
+.ribbon.base.left {
+  position: absolute;
+  top: -18px;
+  padding: 5px;
+  left: -200px;
+  right: auto;
+}
+.correct-answer {
+  position: absolute;
+  top: -18px;
+  right: -5px;
+  left: auto;
+  padding: 5px 10px!important;
+  background: white;
+  border: #adadad solid 1px !important;
+  color: #222;
+}
+.correct-answer.left {
+  left: -5px;
+  right: auto;
+}
+.correct-answer:hover {
+  background: #3498db;
+  color: white !important;
+  text-align: center;
+  border: #3498db solid 1px !important;
+}
+.correct-answer.active {
+  background: #3498db;
+  color: white !important;
+  text-align: center;
+  border: #3498db solid 1px !important;
+}
+.ribbon.base .not-correct {
+  vertical-align: text-bottom;
+  color: black;
+  font-size: 15px;
+}
+.ribbon.base a:hover {
+  color: black;
+}
+.correct-answer.right {
+  right: -5px;
+  left: auto;
+}
